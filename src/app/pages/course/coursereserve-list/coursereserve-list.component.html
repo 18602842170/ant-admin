@@ -1,0 +1,66 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'" class="breadcrumb_style">
+  <div nz-col [nzSpan]="24">
+    <nz-breadcrumb class='breadcrumb_test'>
+    </nz-breadcrumb>
+  </div>
+  <div nz-col [nzSpan]="24">
+  </div>
+</div>
+
+<div nz-row [nzType]="'flex'" style="margin:24px; background: #fff; padding:24px 32px;position: relative">
+  
+  <div nz-col [nzSpan]="5" class='text_margin'>
+    <label style="width:20%">课程：</label>
+    <nz-select style="width: 60%;"  [(ngModel)]="pageCon.courseId"    [nzSize]="'large'" [nzPlaceHolder]="'请选择课程'">
+      <nz-option [nzLabel]="'全部'" [nzValue]="0"></nz-option>
+      <nz-option *ngFor="let pre of classResult" [nzLabel]="pre.name" [nzValue]="pre.id"></nz-option>
+    </nz-select>
+  </div>
+
+  <div nz-col [nzSpan]="5" class='text_margin'>
+    <label style="width:20%">预约号：</label>
+    <nz-input style="width:60%" [nzPlaceHolder]="'请输入'" [nzSize]="'large'" [(ngModel)]="pageCon.reserveCode"></nz-input>
+  </div>
+  <div nz-col [nzSpan]="5" class='text_margin'>
+    <label style="width:20%">手机号：</label>
+    <nz-input style="width:60%" [nzPlaceHolder]="'请输入'" [nzSize]="'large'" [(ngModel)]="pageCon.phoneNumber"></nz-input>
+  </div>
+
+
+  <div nz-col [nzSpan]="4"  class='text_margin' style="position: absolute;right: 24px;">
+    <button nz-button [nzType]="'primary'" style="margin-right: 8px;float: right" (click)="searchList(true)">
+      <span>查询</span>
+    </button>
+  </div>
+  <div nz-col [nzSpan]="24" class='text_margin'>
+  </div>
+
+  <div nz-col [nzSpan]="24" class='text_margin' style="margin-top: 20px;">
+    <nz-table #nzTable [nzAjaxData]="list" [nzIsPagination]="false">
+      <thead nz-thead>
+        <tr>
+          <th nz-th  [nzWidth]="'25%'">
+            <span>课程</span>
+          </th>
+          <th nz-th [nzWidth]="'25%'">
+            <span>预约号</span>
+          </th>
+          <th nz-th [nzWidth]="'30%'">
+            <span>手机号</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody nz-tbody *ngIf='list'>
+          <tr *ngFor="let record of list" >
+              <td>{{ record.courseName  }}</td>
+              <td>{{ record.reserveCode }}</td>
+              <td>{{ record.phoneNumber }}</td>
+            </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div style="margin-top: 20px;">
+      <nz-pagination [nzPageIndex]="pageCon.page" [nzTotal]="pageCon.count"  [nzPageSize]="pageCon.pageSize" (nzPageIndexChange)="changePage($event)"></nz-pagination>
+  </div>
+  
+</div>

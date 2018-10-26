@@ -1,0 +1,261 @@
+.logo {
+    position: relative;
+    padding-left: 24px; // padding: 16px;
+    height: 64px;
+    line-height: 64px; // background: #002140;
+    overflow: hidden;
+    transition: all .3s;
+    img {
+        display: inline-block;
+        height: 32px;
+        vertical-align: middle;
+    }
+    h1 {
+        display: inline-block;
+        margin-left: 12px;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 700;
+        vertical-align: middle;
+        transition: all .3s;
+    }
+}
+
+// :host ::ng-deep .ant-layout-sider-collapsed .logo h1 {
+//     display: none;
+//     transition: all .3s;
+// }
+:host ::ng-deep .ant-layout-sider-collapsed .nav-text {
+    display: none;
+}
+
+:host ::ng-deep .ant-layout-sider-collapsed .ant-menu-submenu-title:after {
+    display: none;
+}
+
+:host ::ng-deep .ant-layout-sider-collapsed .anticon {
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+:host ::ng-deep .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: color .3s;
+}
+
+:host ::ng-deep .trigger:hover {
+    color: #108ee9;
+}
+
+//布局 layout start
+:host ::ng-deep .ant-layout {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex: auto;
+    flex: auto;
+    background: #f0f2f5;
+    .ant-layout-sider {
+        -webkit-transition: all .2s;
+        transition: all .2s;
+        position: relative; // background: #001529;
+        min-width: 0
+    }
+    .ant-layout-has-sider {
+        -ms-flex-direction: row;
+        flex-direction: row
+    }
+    .ant-layout-has-sider>.ant-layout,
+    .ant-layout-has-sider>.ant-layout-content {
+        overflow-x: hidden
+    }
+    .ant-layout-footer,
+    .ant-layout-header {
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto
+    }
+    .ant-layout-header {
+        // background: #001529;
+        padding: 0 50px;
+        height: 64px;
+        line-height: 64px
+    }
+    .ant-layout-footer {
+        background: #f0f2f5;
+        padding: 24px 50px;
+        color: rgba(0, 0, 0, .65);
+        font-size: 14px
+    }
+    .ant-layout-content {
+        -ms-flex: auto;
+        flex: auto
+    }
+    .ant-layout-sider {
+        -webkit-transition: all .2s;
+        transition: all .2s;
+        position: relative; // background: #001529;
+        min-width: 0
+    }
+    .ant-layout-sider-children {
+        height: 100%;
+        padding-top: .1px;
+        margin-top: -.1px
+    }
+    .ant-layout-sider-has-trigger {
+        padding-bottom: 48px
+    }
+    .ant-layout-sider-right {
+        -ms-flex-order: 1;
+        order: 1
+    }
+    .ant-layout-sider-trigger {
+        position: fixed;
+        text-align: center;
+        bottom: 0;
+        cursor: pointer;
+        height: 48px;
+        line-height: 48px;
+        color: #fff; // background: #002140;
+        z-index: 1;
+        -webkit-transition: all .2s;
+        transition: all .2s
+    }
+    .ant-layout-sider-zero-width>* {
+        overflow: hidden
+    }
+    .ant-layout-sider-zero-width-trigger {
+        position: absolute;
+        top: 64px;
+        right: -36px;
+        text-align: center;
+        width: 36px;
+        height: 42px;
+        line-height: 42px; // background: #001529;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        -webkit-transition: background .3s ease;
+        transition: background .3s ease
+    }
+    .ant-layout-sider-zero-width-trigger:hover {
+        background: #192c3e
+    }
+}
+
+:host ::ng-deep .ant-layout * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+//布局 layout end
+//布局 layout-haeder start
+:host ::ng-deep .ant-layout-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px 0 0 !important;
+    background: #fff !important;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+    box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+
+// sider 收缩按钮 strat
+i.trigger {
+    font-size: 20px;
+    line-height: 64px;
+    cursor: pointer;
+    -webkit-transition: all .3s, padding 0s;
+    transition: all .3s, padding 0s;
+    padding: 0 24px
+}
+
+i.trigger:hover {
+    background: #e6f7ff
+}
+
+// sider 收缩按钮 end
+// 提醒信息   header-info  start
+.header-info {
+    display: flex;
+    align-items: center;
+    .hover {
+        cursor: pointer;
+        &:hover {
+            background: #e6f7ff;
+        }
+    }
+    .anticon {
+        margin: 0 12px;
+    }
+}
+
+// 个人中心 start
+// popover  气泡卡片 start
+.user {
+    // display: flex;
+    // align-items: center;
+    margin: 15px 0;
+    height: 24px;
+    cursor: pointer;
+    span {
+        margin-left: 4px;
+        vertical-align: middle;
+    }
+    img {
+        vertical-align: middle;
+    }
+}
+
+.popover-template {
+    margin: 0 !important;
+    p {
+        // display: block;
+        padding: 6px 16px !important;
+        margin: 0 -16px;
+        color: #333 !important;
+        a {
+            color: #333 !important;
+        }
+        &:hover {
+            background-color: #a9cd06 !important;
+            a {
+                color: #fff !important;
+            }
+        }
+    }
+}
+
+// popover  气泡卡片 end
+// 个人中心 end
+@media only screen and (max-width:768px) {
+    i.trigge {
+        padding: 0 12px
+    }
+}
+
+//布局 layout-header end
+:host ::ng-deep .ant-badge {
+    margin-right: 16px;
+}
+
+.head-example {
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
+    background: #eee;
+    display: inline-block;
+}
+
+.search-btn {
+    line-height: 64px;
+    width: 38px;
+    cursor: pointer;
+}
+
+

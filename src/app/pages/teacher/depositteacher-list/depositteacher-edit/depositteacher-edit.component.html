@@ -1,0 +1,55 @@
+<div style="margin: 24px">
+    <nz-card class="card_margin">
+      <ng-template #body>
+        <div nz-col [nzSpan]="16" [nzOffset]="'4'">
+          <div nz-form >
+  
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                  <label for="title" nz-form-item-required>教师</label>
+                </div>
+                <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                <nz-select style="width: 75%;"  [(ngModel)]="data.userId"    [nzSize]="'large'" [nzPlaceHolder]="'请选择教师'">
+                  <nz-option *ngFor="let pre of tearchersResult" [nzLabel]="pre.teacherName" [nzValue]="pre.userId"></nz-option>
+                </nz-select>
+                <div nz-form-explain *ngIf="data.teacherError">请选择教师</div>
+              </div>
+            </div>
+  
+            <div nz-form-item nz-row>
+              <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                <label for="title" nz-form-item-required>教室</label>
+              </div>
+              <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                <nz-select style="width: 75%;"  [(ngModel)]="data.classroomId"    [nzSize]="'large'" [nzPlaceHolder]="'请选择教室'">
+                    <nz-option *ngFor="let pre of classroomResult" [nzLabel]="pre.classroomName" [nzValue]="pre.id"></nz-option>
+                </nz-select>
+                <div nz-form-explain *ngIf="data.classroomError">请选择教室</div>
+              </div>
+            </div>
+  
+            <div nz-form-item nz-row>
+              <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                  <label for="title" nz-form-item-required>托管时间</label>
+              </div>
+              <div nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+                <nz-rangepicker  style="width: 75%;" [(ngModel)]="data.dateRange" [nzFormat]="'YYYY/MM/DD'"></nz-rangepicker>
+                <div nz-form-explain *ngIf="data.dateError">请选择托管时间</div>
+              </div>
+            </div>
+  
+            <div nz-form-item nz-row>
+                <div nz-form-explain style="margin-top:30px;margin-left: 40%">
+                  <button nz-button [nzType]="'primary'" (click)="edit()">
+                    <span>提交</span>
+                  </button>
+                  <button nz-button [nzType]="'default'" (click)="cancel()">
+                    <span>取消</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            </div>
+      </ng-template>
+    </nz-card>
+  </div>

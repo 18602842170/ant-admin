@@ -1,0 +1,41 @@
+<div  style="margin:24px; min-height: 735px;">
+    <nz-card class="card_margin">
+      <ng-template #body>
+        <div nz-col [nzSpan]="16" [nzOffset]="'4'">
+          <div nz-form  >
+
+          <div nz-form-item nz-row>
+            <nz-calendar [nzLocale]="'zh-cn'">
+              <ng-template #dateCell let-day>
+                <nz-badge [nzStatus]="'success'"  [nzText]="day.date|date:'yyyy-MM-dd'"  (click)='searchCourseInfor(day.title)'  *ngIf="findCourses(day.title)"></nz-badge>
+              </ng-template>
+              <ng-template #monthCell let-month >
+                <nz-badge [nzStatus]="'success'" [nzText]="'This Month is Sep'" *ngIf="month.index==11"></nz-badge>
+              </ng-template>
+            </nz-calendar>
+          </div>
+
+          <div style="background: #ECECEC;padding:30px;" >
+              <div nz-row [nzGutter]="8" *ngIf='icourseDetail'>
+                <div nz-col [nzSpan]="8" *ngFor="let coursedetail of icourseDetail">
+                  <nz-card>
+                    <ng-template #title>
+                      课程名称：{{coursedetail.name}}
+                    </ng-template>
+                    <ng-template #body>
+                      <p>上课日：{{coursedetail.serachDate}}</p>
+                      <p>上课时间：{{coursedetail.startTime}}</p>
+                      <p>下课时间：{{coursedetail.endTime}}</p>
+                    </ng-template>
+                  </nz-card>
+                </div>
+               </div>
+          </div>
+         
+
+
+            </div>
+            </div>
+      </ng-template>
+    </nz-card>
+  </div>

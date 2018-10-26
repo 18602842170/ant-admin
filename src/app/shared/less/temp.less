@@ -1,0 +1,173 @@
+@import "curr";
+// 纵向栅格 start
+.row-padding {
+    margin-top: 24px;
+    background-color: rgb(255, 255, 255);
+}
+
+.border-box {
+    border-bottom: 1px solid rgb(241, 241, 241);
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+}
+
+.border-none-box {
+    margin-bottom: 24px;
+}
+
+.text_margin {
+    margin-bottom: 24px;
+}
+
+.lead-bottom {
+    margin-bottom: 24px;
+}
+
+// 纵向栅格 end
+// 卡片模板 card  start
+.card-title {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 4px 0;
+    display: inline-block;
+}
+
+.card6 {
+    .h2 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        white-space: nowrap;
+        color: rgba(0, 0, 0, .85);
+        margin-top: 4px;
+        margin-bottom: 0;
+        font-size: 30px;
+        line-height: 38px;
+        height: 38px;
+        margin-top: -16px;
+    }
+    .card_details {
+        height: 50px;
+        font-size: 14px;
+    }
+    .card_details+p {
+        padding-top: 9px;
+        margin-top: 8px;
+        font-size: 14px;
+        white-space: nowrap; // border-top: 1px solid #e8e8e8;
+    }
+}
+
+.card6.numberInfoValue {
+    margin-top: -16px;
+    font-size: 0; // overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+    span {
+        color: rgba(0, 0, 0, .85);
+        display: inline-block;
+        line-height: 32px;
+        height: 32px;
+        font-size: 24px;
+        margin-right: 32px;
+    }
+    .subTotal {
+        color: rgba(0, 0, 0, .45);
+        font-size: 16px;
+        vertical-align: top;
+        margin-right: 0;
+    }
+}
+
+// 卡片模板 card  end
+// 标签页模板 tabs  start
+:host ::ng-deep .ant-tabs-nav-scroll {
+    padding: 0 24px;
+}
+
+.tabHeading {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 4px 0;
+    display: inline-block;
+    h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+}
+
+.tabBarExtraContent-date {
+    padding-right: 24px;
+    line-height: 48px;
+    font-size: 14px;
+    .salesExtra___2aUxm {
+        display: inline-block;
+        margin-right: 24px;
+        a {
+            color: rgba(0, 0, 0, .65);
+            margin-left: 24px;
+        }
+        a.currentDate___TqaL5,
+        a:hover {
+            color: #1890ff;
+        }
+    }
+}
+
+// 标签页模板 tabs  end
+// 下拉菜单 dropdown start
+.dropdown-btn {}
+
+.dropdown-hide {}
+
+// 下拉菜单 dropdown end
+// 表格 table start
+:host ::ng-deep .ant-table-thead>tr>th {
+    padding: 10px 8px;
+    word-break: break-all;
+    padding: 10px 8px;
+}
+
+:host ::ng-deep .ant-table-tbody>tr>td {
+    padding: 4px 8px;
+    word-break: break-all;
+    padding: 10px 8px;
+}
+
+// 表格 table end
+// 面包屑+详情  breadcrumb + detail  start
+:host ::ng-deep .ant-breadcrumb {
+    font-size: 14px;
+}
+
+.breadcrumb {
+    margin-top: 2px;
+    background: #fff;
+    padding: 16px 32px 0;
+    .breadcrumb-test {
+        margin-bottom: 16px;
+    }
+}
+
+.breadcrumb-detail {
+    display: flex;
+    .breadcrumb-detail-title {
+        margin-bottom: 16px;
+        font-size: 20px;
+        font-weight: 500;
+        color: rgba(0, 0, 0, .85);
+    }
+    .breadcrumb-detail-content {
+        margin-bottom: 16px;
+    }
+}
+
+// 面包屑+详情  breadcrumb + detail  end
+// 按钮 button start
+// 按钮 button end
+// 气泡卡片 Popover start
+// 气泡卡片 Popover end

@@ -1,0 +1,116 @@
+  <nz-card class="card_margin" style="margin: 24px" nz-col [nzSm]="16" [nzXs]="24">
+
+    <ng-template #body>
+      <div nz-col [nzSpan]="16" [nzOffset]="'4'">
+        <div nz-form>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>教师</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-select style="width:100%;"   [(ngModel)]="data.userId"  [nzSize]="'large'" [nzPlaceHolder]="'请选择'">
+                 <nz-option *ngFor="let pre of tearchersResult" [nzLabel]="pre.teacherName" [nzValue]="pre.userId"></nz-option>
+              </nz-select>
+              <div nz-form-explain *ngIf="data.teacherError">请选择教师</div>
+            </div>
+          </div>
+            <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>课时数</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-input-number style="width:75%;"  [nzDisabled]='data.isRepeat =="2"'  [(ngModel)]="data.courseNumber" [nzMin]="0" [nzStep]="1" [nzPlaceHolder]="'请输入'"></nz-input-number>
+              <div nz-form-explain *ngIf="data.courseNumberError">请选择课程数</div>
+              <div nz-form-explain *ngIf="data.courseNumBigError">选择课程数超过可排课数，当前可排最大课程数为:{{data.courseNumberCan}}</div>
+              
+              
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>开始时间</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-datepicker style="width: 100%"  [nzPlaceHolder]="'请选择'"  [(ngModel)]="data.courseDate"></nz-datepicker>
+               <div nz-form-explain *ngIf="data.courseDateError">请选择开始时间</div>
+            </div>
+          </div>
+           
+           
+               <div nz-form-item nz-row>
+              <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                <label for="title" nz-form-item-required>日期重复</label>
+              </div>
+              <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                <nz-select style="width: 100%;"  [nzPlaceHolder]="'请选择'" [(ngModel)]="data.isRepeat"   nzAllowClear (ngModelChange)="isRepeat($event)">
+                  <nz-option [nzLabel]="'重复'" [nzValue]="'1'"></nz-option>
+                  <nz-option [nzLabel]="'不重复'" [nzValue]="'2'"></nz-option>
+                </nz-select>
+                <div nz-form-explain *ngIf="data.repeatError">请选择日期是否重复</div>
+              </div>
+            </div>
+
+
+
+
+            <div nz-form-item nz-row>
+              <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                <label for="title" nz-form-item-required>周期选择</label>
+              </div>
+              <div nz-form-control nz-col [nzSm]="18" [nzXs]="24" nzHasFeedback>
+                <label nz-checkbox  [(ngModel)]="day.Sunday"  (ngModelChange)="_console($event)" [nzDisabled]='data.isRepeat =="2"'>
+                  <span>周日</span>
+                </label>
+                <label nz-checkbox   [(ngModel)]="day.Monday"    (ngModelChange)="_console($event)" [nzDisabled]='data.isRepeat =="2"'>
+                  <span>周一</span>
+                </label>
+                <label nz-checkbox   [(ngModel)]="day.Tuesday"    (ngModelChange)="_console($event)" [nzDisabled]='data.isRepeat=="2"'>
+                  <span>周二</span>
+                </label>
+                <label nz-checkbox   [(ngModel)]="day.Wednesday"  (ngModelChange)="_console($event)"   [nzDisabled]='data.isRepeat =="2"'>
+                  <span>周三</span>
+                </label>
+                <label nz-checkbox   [(ngModel)]="day.Thursday"    (ngModelChange)="_console($event)" [nzDisabled]='data.isRepeat =="2"'>
+                  <span>周四</span>
+                </label>
+                <label nz-checkbox   [(ngModel)]="day.Friday"   (ngModelChange)="_console($event)" [nzDisabled]='data.isRepeat =="2"'>
+                  <span>周五</span>
+                </label>
+                <label nz-checkbox   [(ngModel)]="day.Saturday"    (ngModelChange)="_console($event)" [nzDisabled]='data.isRepeat =="2"'>
+                  <span>周六</span>
+                </label>
+                <div nz-form-explain *ngIf="data.timeChooseEror">请选择日期</div>
+              </div>
+            </div>
+            <div nz-form-item nz-row>
+              <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                <label for="title" nz-form-item-required>时段选择</label>
+              </div>
+              <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                <nz-timepicker   nzFormat="HH:mm"  [(ngModel)]="data.startTime"></nz-timepicker>
+                <div nz-form-explain *ngIf="data.startTimeError">请选择开始时间</div>
+                <nz-timepicker  nzFormat="HH:mm"   [(ngModel)]="data.endTime"></nz-timepicker>
+                <div nz-form-explain *ngIf="data.endTimeError">请选择结束时间</div>
+              </div>
+            </div>
+               <div nz-form>
+
+
+          <div nz-form-item nz-row>
+              <div nz-form-explain style="margin-top:30px;margin-left: 45%">
+                <button nz-button [nzType]="'primary'" (click)="submit()">
+                  <span>提交</span>
+                </button>
+                <button nz-button [nzType]="'default'" (click)="cancel()">
+                  <span>取消</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </ng-template>
+  </nz-card>

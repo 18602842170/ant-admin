@@ -1,0 +1,83 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'" class="breadcrumb_style">
+  <div nz-col [nzSpan]="24">
+    <nz-breadcrumb class='breadcrumb_test'>
+    </nz-breadcrumb>
+  </div>
+  <div nz-col [nzSpan]="24">
+  </div>
+</div>
+
+
+<div nz-row [nzType]="'flex'" style="margin:24px; background: #fff; padding:24px 32px;position: relative">
+  <div nz-col [nzSpan]="5" class='text_margin'>
+    <label style="width:20%">年级：</label>
+    <nz-select style="width:60%;"  [nzSize]="'large'" [(ngModel)]="pageCon.gradeId">
+      <nz-option [nzLabel]="'未选择'" [nzValue]="0"></nz-option>
+      <nz-option *ngFor="let pre of presult" [nzLabel]="pre.tpName" [nzValue]="pre.id"></nz-option>
+  </nz-select>
+  </div>
+
+
+  <div nz-col [nzSpan]="4"  class='text_margin' style="position: absolute;right: 24px;">
+    <button nz-button [nzType]="'primary'" style="margin-right: 8px;float: right" (click)="loadStaffList()">
+      <span>查询</span>
+    </button>
+  </div>
+  <div nz-col [nzSpan]="24" class='text_margin'>
+  </div>
+
+  <div nz-col [nzSpan]="24" class='text_margin'  style="margin-top: 20px;">
+    <nz-table #nzTable [nzSize]="'middle'" [nzAjaxData]="icourse" [nzIsPagination]="false" nzBordered>
+      <thead nz-thead>
+      <tr>
+        <th nz-th  [nzWidth]="'6%'">
+          <span>年级</span>
+        </th>
+        <th nz-th  [nzWidth]="'6%'">
+          <span>科目</span>
+        </th>
+        <th nz-th [nzWidth]="'15%'">
+          <span>课程</span>
+        </th>
+        <th nz-th  [nzWidth]="'10%'">
+          <span>星期一</span>
+        </th>
+        <th nz-th  [nzWidth]="'10%'">
+          <span>星期二</span>
+        </th>
+        <th nz-th  [nzWidth]="'10%'">
+          <span>星期三</span>
+        </th>
+        <th nz-th  [nzWidth]="'10%'">
+          <span>星期四</span>
+        </th>
+        <th nz-th  [nzWidth]="'10%'">
+          <span>星期五</span>
+        </th>
+        <th nz-th  [nzWidth]="'10%'">
+          <span>星期六</span>
+        </th>
+        <th nz-th  [nzWidth]="'10%'">
+          <span>星期日</span>
+        </th>
+      </tr>
+      </thead>
+      <tbody nz-tbody>
+        <tr *ngFor="let course of icourse" >
+          <td>{{ course.grade }}</td>
+          <td>{{ course.courseSubject }}</td>
+          <td>{{ course.courseName }}</td>
+          <td>{{ course.mon }}</td>
+          <td>{{ course.tues }}</td>
+          <td>{{ course.wed }}</td>
+          <td>{{ course.thur }}</td>
+          <td>{{ course.fri }}</td>
+          <td>{{ course.sat }}</td>
+          <td >{{ course.sun }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+
+</div>
+

@@ -1,0 +1,122 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'" class="breadcrumb_style">
+  <div nz-col [nzSpan]="24">
+    <nz-breadcrumb class='breadcrumb_test'>
+    </nz-breadcrumb>
+  </div>
+  <div nz-col [nzSpan]="24">
+  </div>
+
+</div>
+
+<div nz-row [nzType]="'flex'" style="margin:24px; background: #fff; padding:24px 32px;">
+  <div nz-col [nzSpan]="5" class='text_margin'>
+    <label style="width:20%">用户名：</label>
+    <nz-input style="width:60%" [nzPlaceHolder]="'请输入'" [nzSize]="'large'" [(ngModel)]="pageCon.name"></nz-input>
+  </div>
+  <div nz-col [nzSpan]="5" class='text_margin'>
+    <label style="width:20%">角色：</label>
+    <nz-select style="width: 60%;" [nzSize]="'large'" [(ngModel)]="pageCon.roleId">
+      <nz-option [nzLabel]="'全部'" [nzValue]="0"></nz-option>
+      <nz-option *ngFor="let pre of presult" [nzLabel]="pre.name" [nzValue]="pre.id"></nz-option>
+    </nz-select>
+  </div>
+  <!-- <div nz-col [nzSpan]="4" class='text_margin'>
+      <label style="width:20%">部门：</label>
+      <nz-select style="width:60%;" [nzSize]="'large'" [(ngModel)]="pageCon.deptId">
+          <nz-option [nzLabel]="'未选择'" [nzValue]="0"></nz-option>
+        <nz-option *ngFor="let pre of deptResult" [nzLabel]="pre.deptName" [nzValue]="pre.id"></nz-option>
+      </nz-select>
+    </div> -->
+  <div nz-col [nzSpan]="8" [nzOffset]="buttonSet" class='text_margin' style="position: absolute;right: 48px;">
+
+    <!-- <button nz-button [nzType]="'default'" style="margin-right: 8px;float:right" (click)="reset()">
+        <span>重置</span>
+      </button> -->
+    <button class="addBtn" [nzType]="'primary'" nz-button style="margin-right: 8px;float:right" (click)="creat()">
+      <span>新建</span>
+    </button>
+    <button nz-button [nzType]="'primary'" style="margin-right: 8px;float:right" (click)="search()">
+      <span>查询</span>
+    </button>
+
+  </div>
+  <div nz-col [nzSpan]="24" class='text_margin'>
+
+  </div>
+
+
+  <div nz-col [nzSpan]="24" class='text_margin' style="margin-top: 20px;">
+    <nz-table #nzTable [nzAjaxData]="iusers" [nzIsPagination]="false">
+      <thead nz-thead>
+        <tr>
+          <!-- <th nz-th nzCheckbox>
+              <label nz-checkbox [(ngModel)]="_allChecked" [nzIndeterminate]="_indeterminate" (ngModelChange)="_checkAll($event)">
+              </label>
+            </th> -->
+          <th nz-th [nzWidth]="'20%'">
+            <span>用户名</span>
+          </th>
+          <th nz-th [nzWidth]="'20%'">
+            <span>姓名</span>
+          </th>
+          <th nz-th [nzWidth]="'20%'">
+            <span>手机号码</span>
+          </th>
+          <th nz-th [nzWidth]="'10%'">
+            <span>角色</span>
+          </th>
+          <th nz-th [nzWidth]="'10%'">
+            <span>验证码</span>
+          </th>
+          <th nz-th>
+            <span>操作</span>
+          </th>
+
+        </tr>
+      </thead>
+      <tbody nz-tbody *ngIf='iusers'>
+        <tr *ngFor="let user of iusers">
+          <td>{{ user.name }}</td>
+          <td>{{ user.nikeName }}</td>
+          <td>{{ user.phoneNumber }}</td>
+          <td>{{ user.roleName }}</td>
+          <td>{{ user.verifyCode }}</td>
+          <!-- <td>{{ user.deptName }}</td> -->
+          <td>
+            <span *ngIf='user.deleteFlg==true'>
+              <a>已删除</a>
+            </span>
+            <span *ngIf='user.deleteFlg==false'>
+              <a (click)="edit(user.id)">编辑</a>
+              <span nz-table-divider></span>
+
+              <nz-popconfirm [nzTitle]="'确定删除？'" (nzOnConfirm)="confirm(user.id)" (nzOnCancel)="cancel()">
+                <a nz-popconfirm>删除</a>
+                <!--<a (click)="delete(user.id)" nz-popconfirm>删除</a>-->
+              </nz-popconfirm>
+              <span nz-table-divider></span>
+              <a (click)="resetPassword(user.id)">重置密码</a>
+            </span>
+            <span *ngIf="user.isStudent && user.deleteFlg==false">
+              <span nz-table-divider></span>
+              <a (click)="transferToStudentDetail(user.studentId)">补充信息</a>
+            </span>
+            <span *ngIf='user.isTearch && user.deleteFlg==false'>
+              <span nz-table-divider></span>
+              <a (click)="transferToTearchDetail(user.teacherId)">补充信息</a>
+            </span>
+            <span *ngIf='user.isStudent && user.deleteFlg==false && user.wechatOpenId'>
+              <span nz-table-divider></span>
+              <a (click)="sendVerifyCode(user.id)">生成验证码</a>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div style="margin-top: 20px;">
+    <nz-pagination [nzPageIndex]="pageCon.page" [nzTotal]="pageCon.count" [nzPageSize]="pageCon.pageSize"
+      (nzPageIndexChange)="changePage($event)"></nz-pagination>
+  </div>
+
+</div>

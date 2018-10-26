@@ -1,0 +1,21 @@
+<ng-container *ngFor="let item of menu">
+  <li *ngIf="!item.children" nz-menu-item>
+    <!-- <span title (click)="toUrl(rootPath+'/'+item.path)">
+      <i *ngIf="item.data.menu.icon" class="anticon anticon-{{item.data.menu.icon}}"></i>
+      <span class="nav-text">{{item.data.menu.title}}</span>
+    </span> -->
+    <a [routerLink]="rootPath+'/'+item.path">
+      <i *ngIf="item.data.menu.icon" class="anticon anticon-{{item.data.menu.icon}}"></i>
+      <span class="nav-text menu-text">{{item.data.menu.title}}</span>
+    </a>
+  </li>
+  <li *ngIf="item.children" nz-submenu>
+    <span title>
+      <i *ngIf="item.data.menu.icon" class="anticon anticon-{{item.data.menu.icon}}"></i>
+      <span class="nav-text menu-text">{{item.data.menu.title}}</span>
+    </span>
+    <ul>
+      <militar-sub-menu [menu]="item.children" [rootPath]="rootPath+'/'+item.path"></militar-sub-menu>
+    </ul>
+  </li>
+</ng-container>

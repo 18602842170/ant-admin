@@ -1,0 +1,99 @@
+<div style="margin:24px">
+  <div nz-row [nzGutter]="24">
+    <div nz-col class="gutter-row" [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="12">
+      <nz-card [nzBordered]="false" class='row-padding'>
+        <ng-template #extra>
+          <nz-dropdown [nzPlacement]="'bottomRight'">
+            <button nz-button nz-dropdown>
+              <i class="anticon anticon-ellipsis ant-dropdown-trigger"></i>
+            </button>
+            <ul nz-menu>
+              <li nz-menu-item>
+                <a (click)="creat()">新建</a>
+              </li>
+              <li nz-menu-item>
+                <a (click)="edit()">编辑</a>
+              </li>
+            </ul>
+          </nz-dropdown>
+        </ng-template>
+        <ng-template #title>
+          <span class="card-title">部门列表</span>
+        </ng-template>
+        <ng-template #body>
+          <div class="tree-container">
+            <tree [tree]="fonts" (nodeSelected)="onNodeSelected($event)" (nodeRemoved)="onNodeRemoved($event)"></tree>
+          </div>
+        </ng-template>
+      </nz-card>
+    </div>
+
+
+    <div nz-col class="gutter-row" [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="12">
+      <nz-card [nzBordered]="false" class='row-padding'>
+        <ng-template #title>
+          <span class="card-title">
+            <ng-container *ngIf="flg == 'creat' || flg == 'default'">部门新建</ng-container>
+            <ng-container *ngIf="flg == 'edit' && selectFlg == 'select'">部门编辑</ng-container>
+          </span>
+        </ng-template>
+
+        <ng-template #body>
+          <ng-container *ngIf='dept.id != 9'>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="12">
+              <label for="title">上级部门</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="12" nzHasFeedback>
+              <nz-select style="width:75%;" nzShowSearch nzPlaceHolder="Select a person" [(ngModel)]="dept.pId" [nzDisabled]='flg == "creat" && selectFlg == "select" '>
+                <nz-option *ngFor="let pre of presult" [nzLabel]="pre.deptName" [nzValue]="pre.id" [nzDisabled]='pre.id == dept.id && (flg == "edit" && selectFlg == "select")'></nz-option>
+              </nz-select>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="flg == 'edit' && selectFlg == 'select'">
+            <br/>
+            <br/>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title">部门原名称</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="7" [nzXs]="24" nzHasFeedback>
+              <label>{{oldName}}</label>
+            </div>
+          </ng-container>
+          <br/>
+          <br/>
+          <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+            <label for="title">部门名称</label>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="12" nzHasFeedback>
+            <nz-input style="width:75%;" [nzPlaceHolder]="" [nzSize]="'large'" [(ngModel)]="dept.deptName" [nzId]="'deptName'"></nz-input>
+            <nz-input style="width:75%;" [(ngModel)]="dept.id" hidden></nz-input>
+          </div>
+
+          <!-- <ng-container *ngIf="flg == 'creat' && selectFlg == 'select'">
+            <br/>
+            <br/>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title">添加子部门</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="7" [nzXs]="24" nzHasFeedback>
+              <nz-input nzPlaceHolder="输入名称可创建该部门的子部门" [nzSize]="'large'" [(ngModel)]="dept.childDeptName" [nzId]="'childDeptName'"></nz-input>
+            </div>
+          </ng-container> -->
+
+          <br/>
+          <div nz-form-item nz-row>
+            <div nz-form-explain style="margin-top:30px;margin-left: 44%">
+              <button nz-button [nzType]="'primary'" (click)="save()">
+                <span>保存</span>
+              </button>
+              <nz-popconfirm *ngIf="flg == 'edit' && selectFlg == 'select'" [nzTitle]="'该操作会删除该部门下的全部部门，确定继续吗？'" (nzOnConfirm)="confirm()"
+                (nzOnCancel)="cancel()">
+                <button nz-popconfirm nz-button class="ant-btn">删除</button>
+              </nz-popconfirm>
+            </div>
+          </div>
+        </ng-template>
+      </nz-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,219 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'" class="breadcrumb_style breadcrumb">
+  <div nz-col [nzSpan]="24" class='breadcrumb-test'>
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a routerLink="pages/dashboard/analysis">
+          <i class="anticon anticon-user"></i>
+          <span>首页</span>
+        </a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        分布表单
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+  </div>
+  <div nz-col [nzSpan]="24" class='breadcrumb-detail'>
+    <h1 class="breadcrumb-detail-title">分布表单</h1>
+  </div>
+  <div nz-col [nzSpan]="24" class='breadcrumb-detail-content'>
+    <span>将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。</span>
+  </div>
+  <div nz-col [nzSpan]="24" style="height:20px"></div>
+</div>
+
+
+<div style="margin:24px; min-height: 735px;">
+
+
+  <nz-card class="card_margin">
+    <!-- <ng-template #title>
+      分布表单
+    </ng-template> -->
+    <ng-template #body>
+      <div nz-col [nzSpan]="24" style="padding: 20px 0;border-bottom: 1px solid #d1d4da;display: flex">
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="18" [nzLg]="12" [nzXl]="12" style="margin: 0 auto">
+
+          <nz-steps [(nzCurrent)]="current">
+            <nz-step [nzTitle]="'填写转账信息'"></nz-step>
+            <nz-step [nzTitle]="'确认转账信息'"></nz-step>
+            <nz-step [nzTitle]="'完成'"></nz-step>
+          </nz-steps>
+          <div nz-col [nzSpan]="24" style="height:20px"></div>
+          <div [hidden]="current > 0">
+            <form nz-form [formGroup]="validateForm" (ngSubmit)="_submitForm()">
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                  <label for="payuser" nz-form-item-required>付款账户</label>
+                </div>
+                <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                  <nz-input [nzSize]="'large'" formControlName="payuser" [nzId]="'payuser'"></nz-input>
+                  <div nz-form-explain *ngIf="getFormControl('payuser').dirty&&getFormControl('payuser').hasError('required')">请输入付款账户</div>
+                </div>
+              </div>
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                  <label for="receiveuser" nz-form-item-required>收款账户</label>
+                </div>
+                <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="validateForm.controls['receiveuser']">
+                  <nz-input-group [nzSize]="'large'" nzCompact>
+                    <nz-select formControlName="receiveuserPrefix" style="width: 25%;">
+                      <nz-option [nzLabel]="'支付宝'" [nzValue]="'01'"></nz-option>
+                      <nz-option [nzLabel]="'银行账户'" [nzValue]="'02'"></nz-option>
+                    </nz-select>
+                    <input formControlName="receiveuser" id="'receiveuser'" nz-input style="width: 75%;">
+                  </nz-input-group>
+                  <div nz-form-explain *ngIf="getFormControl('receiveuser').dirty&&getFormControl('receiveuser').hasError('required')">请输入收款账户</div>
+                </div>
+              </div>
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                  <label for="receivename" nz-form-item-required>
+                    <span>收款人姓名</span>
+                  </label>
+                </div>
+                <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                  <nz-input [nzSize]="'large'" formControlName="receivename" [nzId]="'receivename'"></nz-input>
+                  <div nz-form-explain *ngIf="getFormControl('receivename').dirty&&getFormControl('receivename').hasError('required')">请输入收款人姓名</div>
+                </div>
+              </div>
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                  <label for="amount" nz-form-item-required>
+                    <span>转账金额</span>
+                  </label>
+                </div>
+                <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                  <nz-input [nzSize]="'large'" formControlName="amount" [nzId]="'amount'"></nz-input>
+                  <div nz-form-explain *ngIf="getFormControl('amount').dirty&&getFormControl('amount').hasError('required')">请输入转账金额</div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div [hidden]="current != 1">
+            <form nz-form [formGroup]="validateForm" (ngSubmit)="_submitForm()">
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                  <label>付款账户</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="14">
+                  <span nz-form-text>{{payuser}}</span>
+                </div>
+              </div>
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                  <label>收款账户</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="14">
+                  <span nz-form-text>{{receiveuser}}</span>
+                </div>
+              </div>
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                  <label>收款人姓名</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="14">
+                  <span nz-form-text>{{receivename}}</span>
+                </div>
+              </div>
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                  <label>转账金额</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="14">
+                  <span nz-form-text>{{amount}}</span>
+                </div>
+              </div>
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                  <label for="password" nz-form-item-required>
+                    <span>支付密码</span>
+                  </label>
+                </div>
+                <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                  <nz-input [nzType]="'password'" [nzSize]="'large'" formControlName="password" [nzId]="'password'"></nz-input>
+                  <div nz-form-explain *ngIf="getFormControl('password').dirty&&getFormControl('password').hasError('required')">请输入支付密码</div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div [hidden]="current != 2">
+            <div nz-col [nzSpan]="24" class="box" style="display: flex;justify-content: center;">
+              <i class="center_box anticon anticon-check-circle" style="font-size: 72px;color: #52c41a;"></i>
+            </div>
+            <div nz-col [nzSpan]="24" class="box" style="display: flex;justify-content: center;">
+              <h1 class="center_box">操作成功</h1>
+            </div>
+            <div nz-col [nzSpan]="24" class="box" style="display: flex;justify-content: center;">
+              <h3 class="center_box">预计两小时内到账</h3>
+            </div>
+            <form nz-form [formGroup]="validateForm" (ngSubmit)="_submitForm()">
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                  <label>付款账户</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="14">
+                  <span nz-form-text>{{payuser}}</span>
+                </div>
+              </div>
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                  <label>收款账户</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="14">
+                  <span nz-form-text>{{receiveuser}}</span>
+                </div>
+              </div>
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                  <label>收款人姓名</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="14">
+                  <span nz-form-text>{{receivename}}</span>
+                </div>
+              </div>
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                  <label>转账金额</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="14">
+                  <span nz-form-text>{{amount}}</span>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="steps-action">
+            <button nz-button [nzType]="'default'" (click)="pre()" *ngIf="current === 1">
+              <span>上一步</span>
+            </button>
+            <button nz-button [disabled]="!validateForm.valid" [nzType]="'primary'" (click)="next()" *ngIf="current < 1">
+              <span>下一步</span>
+            </button>
+            <button nz-button [disabled]="!validateForm.valid" [nzType]="'primary'" (click)="next()" *ngIf="current === 1">
+              <span>提交</span>
+            </button>
+            <button nz-button [nzType]="'primary'" (click)="back()" *ngIf="current === 2">
+              <span>再转一笔</span>
+            </button>
+            <button nz-button [nzType]="'default'" *ngIf="current === 2">
+              <span>查看账单</span>
+            </button>
+          </div>
+        </div>
+
+
+      </div>
+      <div nz-col [nzSpan]="20" [nzOffset]="'2'" style="padding: 20px;line-height: 30px;">
+        <span>说明</span>
+        <br>
+        <span>转账到支付宝账户</span>
+        <br>
+        <span>如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。</span>
+        <br>
+        <span>转账到银行卡</span>
+        <br>
+        <span>如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。</span>
+      </div>
+    </ng-template>
+  </nz-card>
+</div>

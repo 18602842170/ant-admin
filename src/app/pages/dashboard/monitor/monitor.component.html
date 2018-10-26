@@ -1,0 +1,159 @@
+<div nz-row>
+  <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="18">
+    <div style="margin:24px;">
+      <nz-card class="card_margin" style="min-height: 800px">
+        <ng-template #title>
+          活动实时交易情况
+        </ng-template>
+        <ng-template #body>
+          <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="6">
+            今日交易总额
+            <br>
+            <span class="fs_24">124,543,233</span>元
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="6">
+            销售目标完成率
+            <br>
+            <span class="fs_24">92%</span>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="6">
+            活动剩余时间
+            <br>
+            <span class="fs_24">{{hour}}:{{minute}}:{{second}}</span>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="6">
+            每秒交易总额
+            <br>
+            <span class="fs_24">234</span>元
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24">
+            <nz-tooltip [nzTitle]="'等待后期实现'" [nzPlacement]="'top'">
+              <img nz-tooltip width="100%" src="https://gw.alipayobjects.com/zos/rmsportal/HBWnDEUXCnGnGrRfrpKa.png">
+            </nz-tooltip>
+          </div>
+        </ng-template>
+      </nz-card>
+    </div>
+  </div>
+  <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="6">
+    <div nz-col [nzSpan]="24">
+      <div style="margin:24px;">
+        <nz-card class="card_margin">
+          <ng-template #title>
+            活动情况预测
+          </ng-template>
+          <ng-template #body>
+            <div>
+              <v-chart [forceFit]="forceFit" [height]="height" [data]="data3" [scale]="scale3">
+                <v-tooltip></v-tooltip>
+                <v-axis></v-axis>
+                <v-line position="year*value" [size]="2"></v-line>
+                <v-area position="year*value"></v-area>
+              </v-chart>
+            </div>
+          </ng-template>
+        </nz-card>
+      </div>
+    </div>
+    <div nz-col [nzSpan]="24">
+      <div style="margin:24px;">
+        <nz-card class="card_margin">
+          <ng-template #title>
+            券核效率
+          </ng-template>
+          <ng-template #body>
+            <div>
+              <v-chart [padding]="padding" [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
+                <v-coord type="polar" [startAngle]="-202.5" [endAngle]="22.5" [radius]="0.8"></v-coord>
+                <v-axis dataKey="value" [zIndex]="2" [line]="null" [label]="axisLabel" [tickLine]="null" [grid]="null"></v-axis>
+                <v-axis dataKey="1" [show]="false"></v-axis>
+                <v-series gemo="point" position="value*1" shape="pointer" color="#1890FF" [active]="false"></v-series>
+
+                <v-guide type="line" [start]="lineGuide1Start" [end]="lineGuide1End" [lineStyle]="lineGuide1LineStyle"></v-guide>
+                <v-guide type="line" [start]="lineGuide2Start" [end]="lineGuide2End" [lineStyle]="lineGuide2LineStyle"></v-guide>
+                <v-guide type="line" [start]="lineGuide3Start" [end]="lineGuide3End" [lineStyle]="lineGuide3LineStyle"></v-guide>
+
+                <v-guide type="arc" [zIndex]="0" [top]="false" [start]="arcGuide1Start" [end]="arcGuide1End" [style]="arcGuide1Style"></v-guide>
+                <v-guide type="arc" [zIndex]="1" [start]="arcGuide2Start" [end]="arcGuide2End" [style]="arcGuide2Style"></v-guide>
+                <v-guide type="html" [position]="htmlGuidePosition" [html]="htmlGuideHtml"></v-guide>
+              </v-chart>
+            </div>
+          </ng-template>
+        </nz-card>
+      </div>
+    </div>
+  </div>
+  <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="18">
+    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="16">
+      <div style="margin:24px;">
+        <nz-card class="card_margin">
+          <ng-template #title>
+            各品类占比
+          </ng-template>
+          <ng-template #body>
+            <div nz-col [nzSpan]="8">
+              <v-chart [padding]="padding" [forceFit]="forceFit" [height]="200" [data]="data4" [scale]="scale4">
+                <!-- <v-tooltip></v-tooltip> -->
+                <v-axis></v-axis>
+                <v-pie position="percent" color="item" [style]="pieStyle"></v-pie>
+                <v-coord [type]="'theta'" radius="0.65" innerRadius="0.64"></v-coord>
+                <!-- <v-legend dataKey="item"></v-legend> -->
+                <v-guide type="html" [position]="guidePosition" [html]="guideHtml"></v-guide>
+              </v-chart>
+            </div>
+            <div nz-col [nzSpan]="8">
+              <v-chart [padding]="padding" [forceFit]="forceFit" [height]="200" [data]="data4" [scale]="scale4">
+                <!-- <v-tooltip></v-tooltip> -->
+                <v-axis></v-axis>
+                <v-pie position="percent" color="item" [style]="pieStyle"></v-pie>
+                <v-coord [type]="'theta'" radius="0.65" innerRadius="0.64"></v-coord>
+                <!-- <v-legend dataKey="item"></v-legend> -->
+                <v-guide type="html" [position]="guidePosition2" [html]="guideHtml2"></v-guide>
+              </v-chart>
+            </div>
+            <div nz-col [nzSpan]="8">
+              <v-chart [padding]="padding" [forceFit]="forceFit" [height]="200" [data]="data4" [scale]="scale4">
+                <!-- <v-tooltip></v-tooltip> -->
+                <v-axis></v-axis>
+                <v-pie position="percent" color="item" [style]="pieStyle"></v-pie>
+                <v-coord [type]="'theta'" radius="0.65" innerRadius="0.64"></v-coord>
+                <!-- <v-legend dataKey="item"></v-legend> -->
+                <v-guide type="html" [position]="guidePosition3" [html]="guideHtml3"></v-guide>
+              </v-chart>
+            </div>
+          </ng-template>
+        </nz-card>
+      </div>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="8">
+      <div style="margin:24px;">
+        <nz-card class="card_margin">
+          <ng-template #title>
+            热门搜索
+          </ng-template>
+          <ng-template #body>
+            <div>
+              <v-chart [padding]="padding" [width]="313" [height]="320" [data]="data2" [scale]="scale2" [padding]="padding">
+                <v-tooltip [showTitle]="false"></v-tooltip>
+                <v-coord type="rect" direction="TL"></v-coord>
+                <v-point position="x*y" [color]="'category'" shape="cloud" tooltip="value*category"></v-point>
+              </v-chart>
+            </div>
+          </ng-template>
+        </nz-card>
+      </div>
+    </div>
+  </div>
+  <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="6">
+    <div style="margin:24px;">
+      <nz-card class="card_margin">
+        <ng-template #title>
+          资源剩余
+        </ng-template>
+        <ng-template #body>
+          123
+        </ng-template>
+      </nz-card>
+    </div>
+  </div>
+</div>

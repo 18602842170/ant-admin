@@ -1,0 +1,61 @@
+<div style="margin: 24px">
+  <nz-card class="card_margin">
+    <ng-template #body>
+      <div nz-col>
+        <div nz-form >
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>年份</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-datepicker style="width:75%" [nzPlaceHolder]="'请选择'"  [nzFormat]="'YYYY'"   [(ngModel)]="grade.gradeYear"></nz-datepicker>
+              <div nz-form-explain *ngIf="pageCon.yearError">请输入年份</div>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>分类</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-select style="width:75%;"  [nzSize]="'large'" [nzPlaceHolder]="'请选择'" [(ngModel)]="grade.distiguishId">
+                  <nz-option *ngFor="let pre of gradeList" [nzLabel]="pre.tpName" [nzValue]="pre.id"></nz-option>
+              </nz-select>
+              <div nz-form-explain *ngIf="pageCon.distiguishError">请输入分类</div>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>开始时间</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-datepicker style="width:75%" [nzFormat]="'YYYY-MM-DD'" [(ngModel)]="grade.startDate"></nz-datepicker>
+              <div nz-form-explain *ngIf="pageCon.startError">请输入开始时间</div>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>结束时间</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-datepicker style="width:75%" [nzFormat]="'YYYY-MM-DD'" [(ngModel)]="grade.endDate"></nz-datepicker>
+              <div nz-form-explain *ngIf="pageCon.endError">请输入结束时间</div>
+            </div>
+          </div>
+
+
+          <div nz-form-item nz-row>
+            <div nz-form-explain style="margin-top:30px;margin-left: 40%">
+              <button nz-button [nzType]="'primary'" (click)="submit()">
+                <span>提交</span>
+              </button>
+              <button nz-button [nzType]="'default'" (click)="cancel()">
+                <span>取消</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </nz-card>
+</div>
+

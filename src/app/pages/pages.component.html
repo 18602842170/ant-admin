@@ -1,0 +1,183 @@
+<nz-layout *ngIf="pageReady">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" [nzWidth]="256" [nzCollapsedWidth]="80">
+    <div class="logo" style="background-color:#fff;">
+      <img src="../../assets/img/logo.png" width="" height="" alt="logo" />
+      <h1></h1>
+    </div>
+    <militar-menu [menu]="menu" [rootPath]="'/pages'" [isCollapsed]="isCollapsed"></militar-menu>
+  </nz-sider>
+  <nz-layout style="background: rgb(240, 242, 245);">
+    <nz-header>
+      <!--<i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="changeCollapsed()"></i>-->
+      <div class="header-info" style="position: absolute;right: 10px;">
+        <!--<div (click)="viewflag = !viewflag" class="search-btn">
+          <i class="anticon anticon-search"></i>
+        </div>
+        <nz-select *ngIf="viewflag" style="width: 200px;" nzAllowClear [nzPlaceHolder]="'站内搜索'" nzShowSearch>
+          <nz-option>
+            <nz-option [nzLabel]="'搜索提示一'" [nzValue]="'01'"></nz-option>
+            <nz-option [nzLabel]="'搜索提示二'" [nzValue]="'02'"></nz-option>
+            <nz-option [nzLabel]="'搜索提示三'" [nzValue]="'03'"></nz-option>
+          </nz-option>
+        </nz-select>
+        <nz-tooltip [nzTitle]="'使用文档'" [nzPlacement]="'bottom'">
+          <div nz-tooltip class="hover">
+            <i class="anticon anticon-question-circle-o"></i>
+          </div>
+        </nz-tooltip>
+        <nz-popover [nzPlacement]="'bottomRight'" [nzTrigger]="'click'">
+          <div nz-popover class="hover">
+            <nz-badge [nzCount]="12">
+              <ng-template #content>
+                <i class="anticon anticon-bell"></i>
+              </ng-template>
+            </nz-badge>
+
+          </div>
+          <ng-template #nzTemplate>
+            <nz-tabset style="width:253px">
+              <nz-tab>
+                <ng-template #nzTabHeading>
+                  通知
+                </ng-template>
+                <div nz-col [nzSpan]="24">
+                  <div nz-col [nzSpan]="4">
+                    <img style="width:32px;height:32px;margin-top:5px;" src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png">
+                  </div>
+                  <div nz-col style="padding-bottom:10px" [nzSpan]="16" [nzOffset]="1">
+                    <div style="padding-bottom:6px" nz-col [nzSpan]="24">你收到了 14 份新周报</div>
+                    <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">6 个月前</div>
+                  </div>
+                  <div nz-col [nzSpan]="4">
+                    <img style="width:32px;height:32px;margin-top:5px;" src="https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png">
+                  </div>
+                  <div nz-col style="padding-bottom:10px" [nzSpan]="16" [nzOffset]="1">
+                    <div style="padding-bottom:6px" nz-col [nzSpan]="24">你推荐的 曲 已通过第三轮面试</div>
+                    <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">6 个月前</div>
+                  </div>
+                  <div nz-col [nzSpan]="4">
+                    <img style="width:32px;height:32px;margin-top:5px;" src="https://gw.alipayobjects.com/zos/rmsportal/kISTdvpyTAhtGxpovNWd.png">
+                  </div>
+                  <div nz-col style="padding-bottom:10px" [nzSpan]="16" [nzOffset]="1">
+                    <div style="padding-bottom:6px" nz-col [nzSpan]="24">这种模板可以区分多种通知类型</div>
+                    <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">6 个月前</div>
+                  </div>
+                  <div nz-col [nzSpan]="4">
+                    <img style="width:32px;height:32px;margin-top:5px;" src="https://gw.alipayobjects.com/zos/rmsportal/GvqBnKhFgObvnSGkDsje.png">
+                  </div>
+                  <div nz-col style="padding-bottom:10px" [nzSpan]="16" [nzOffset]="1">
+                    <div style="padding-bottom:6px" nz-col [nzSpan]="24">左侧图标用于区分不同的类型</div>
+                    <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">6 个月前</div>
+                  </div>
+                  <div nz-col [nzSpan]="4">
+                    <img style="width:32px;height:32px;margin-top:5px;" src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png">
+                  </div>
+                  <div nz-col style="padding-bottom:10px" [nzSpan]="16" [nzOffset]="1">
+                    <div style="padding-bottom:6px" nz-col [nzSpan]="24">内容不要超过两行字</div>
+                    <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">6 个月前</div>
+                  </div>
+                </div>
+              </nz-tab>
+              <nz-tab>
+                <ng-template #nzTabHeading>
+                  消息
+                </ng-template>
+                <div nz-col [nzSpan]="4">
+                  <img style="width:32px;height:32px;margin-top:5px;" src="https://gw.alipayobjects.com/zos/rmsportal/fcHMVNCjPOsbUGdEduuv.jpeg">
+                </div>
+                <div nz-col style="padding-bottom:10px" [nzSpan]="16" [nzOffset]="1">
+                  <div style="padding-bottom:6px" nz-col [nzSpan]="24">曲丽丽 评论了你</div>
+                  <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">描述信息描述信息描述信息</div>
+                  <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">6 个月前</div>
+                </div>
+                <div nz-col [nzSpan]="4">
+                  <img style="width:32px;height:32px;margin-top:5px;" src="https://gw.alipayobjects.com/zos/rmsportal/fcHMVNCjPOsbUGdEduuv.jpeg">
+                </div>
+                <div nz-col style="padding-bottom:10px" [nzSpan]="16" [nzOffset]="1">
+                  <div style="padding-bottom:6px" nz-col [nzSpan]="24">朱偏右 回复了你</div>
+                  <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">这种模板用于提醒谁与你发生了互动，左侧放『谁』的头像</div>
+                  <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">6 个月前</div>
+                </div>
+                <div nz-col [nzSpan]="4">
+                  <img style="width:32px;height:32px;margin-top:5px;" src="https://gw.alipayobjects.com/zos/rmsportal/fcHMVNCjPOsbUGdEduuv.jpeg">
+                </div>
+                <div nz-col style="padding-bottom:10px" [nzSpan]="16" [nzOffset]="1">
+                  <div style="padding-bottom:6px" nz-col [nzSpan]="24">标题</div>
+                  <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">这种模板用于提醒谁与你发生了互动，左侧放『谁』的头像</div>
+                  <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">6 个月前</div>
+                </div>
+              </nz-tab>
+              <nz-tab>
+                <ng-template #nzTabHeading>
+                  待办
+                </ng-template>
+                <div nz-col style="padding-bottom:15px" [nzSpan]="24">
+                  <div style="padding-bottom:6px;display:flex;justify-content: space-between;" nz-col [nzSpan]="24">
+                    <span>任务名称</span>
+                    <button nz-button [nzSize]="'small'">
+                      <span>未开始</span>
+                    </button>
+                  </div>
+                  <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">任务需要在 2019-01-12 20:00 前启动</div>
+                </div>
+                <div nz-col style="padding-bottom:15px" [nzSpan]="24">
+                  <div style="padding-bottom:6px;display:flex;justify-content: space-between;" nz-col [nzSpan]="24">
+                    <span>第三方紧急代码变更</span>
+                    <button nz-button [nzSize]="'small'" style="color: #f5222d;background: #fff1f0;border-color: #ffa39e;">
+                      <span>马上到期</span>
+                    </button>
+                  </div>
+                  <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">冠霖提交于 2017-01-06，需在 2017-01-07 前完成代码变更任务</div>
+                </div>
+                <div nz-col style="padding-bottom:15px" [nzSpan]="24">
+                  <div style="padding-bottom:6px;display:flex;justify-content: space-between;" nz-col [nzSpan]="24">
+                    <span>信息安全考试</span>
+                    <button nz-button [nzSize]="'small'" style="color: #faad14;background: #fffbe6;border-color: #ffe58f;">
+                      <span>已耗时8天</span>
+                    </button>
+                  </div>
+                  <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">指派竹尔于 2017-01-09 前完成更新并发布</div>
+                </div>
+                <div nz-col style="padding-bottom:15px" [nzSpan]="24">
+                  <div style="padding-bottom:6px;display:flex;justify-content: space-between;" nz-col [nzSpan]="24">
+                    <span>ABCD 版本发布</span>
+                    <button nz-button [nzSize]="'small'" style="color: #1890ff;background: #e6f7ff;border-color: #91d5ff;">
+                      <span>进行中</span>
+                    </button>
+                  </div>
+                  <div style="color:rgba(0,0,0,.35)" nz-col [nzSpan]="24">冠霖提交于 2017-01-06，需在 2017-01-07 前完成代码变更任务</div>
+                </div>
+              </nz-tab>
+            </nz-tabset>
+          </ng-template>
+        </nz-popover>-->
+        <nz-popover [nzPlacement]="'bottomRight'">
+          <div nz-popover class="hover">
+            <span class="user anticon">
+              <img width="24" height="24" src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png">
+              <span *ngIf="this.user">{{user.name}}</span>
+            </span>
+          </div>
+          <ng-template #nzTemplate>
+            <div class="popover-template">
+             <!-- <p>
+                <a routerLink="/pages/exception/exception-trigger">触发报错</a>
+              </p>-->
+              <p>
+                <a (click)="loginOut()">退出登录</a>
+              </p>
+            </div>
+          </ng-template>
+        </nz-popover>
+      </div>
+    </nz-header>
+    <nz-content style="min-height:835px">
+      <!-- <nz-breadcrumb style="margin:12px 0;">
+        <nz-breadcrumb-item>User</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+      </nz-breadcrumb> -->
+      <router-outlet></router-outlet>
+    </nz-content>
+    <nz-footer style="text-align: center;"></nz-footer>
+  </nz-layout>
+</nz-layout>

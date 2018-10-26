@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    font-size: 14px !important;
+}
+.ant-menu-dark.ant-menu-inline, .ant-menu-dark.ant-menu-vertical{
+  margin-top: 15px !important;
+}
+.ant-layout .ant-layout-sider{
+  background-color: #444 !important;
+}
+.ant-menu-vertical .ant-menu-item, .ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-submenu-title, .ant-menu-inline .ant-menu-submenu-title{
+  background-color: #444 !important;
+}
+.ant-menu-inline .ant-menu-item{
+  background-color: #222 !important;
+}
+.ant-menu-inline .ant-menu-item:hover{
+  background-color: #a9cd06 !important;
+}
+.ant-menu-inline .ant-menu-item:focus{
+  background-color: #a9cd06 !important;
+}
+.addBtn{
+  background-color:#a9cd06 !important;
+  border-color: #a9cd06 !important;
+}
+.addBtn:hover{
+  opacity: 0.8;
+}

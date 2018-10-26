@@ -1,0 +1,52 @@
+<div>
+    <nz-card class="card_margin" style="margin: 24px">
+      <ng-template #title>通知新建</ng-template>
+      <ng-template #body>
+        <div nz-col [nzSpan]="16" [nzOffset]="'4'">
+          <div nz-form>
+  
+            <div nz-form-item nz-row>
+              <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                <label for="title" nz-form-item-required>标题</label>
+              </div>
+              <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                <nz-input style="width:75%" [nzPlaceHolder]="'请输入'" [nzSize]="'large'"  [(ngModel)]="inotice.noticeTitle"></nz-input>
+              </div>
+            </div>
+            <div nz-form-item nz-row>
+              <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                <label for="title" nz-form-item-required>内容</label>
+              </div>
+              <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                <nz-input style="width:75%" [nzType]="'textarea'" [nzRows]="'6'" [nzPlaceHolder]="''" [(ngModel)]="inotice.noticeContent"></nz-input>
+              </div>
+            </div>
+            <div nz-form-item nz-row>
+              <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                <label for="title" nz-form-item-required>接收对象</label>
+              </div>
+              <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                <nz-cascader style="width:75%"
+                  [nzOptions]="_options"
+                  [(ngModel)]="_value"
+                  (ngModelChange)="_console($event)"
+                  (nzChange)="_console($event)">
+                </nz-cascader>`
+              </div>
+            </div>
+  
+            <div nz-form-item nz-row>
+                <div nz-form-explain style="margin-top:30px;margin-left: 40%">
+                  <button nz-button [nzType]="'primary'" (click)="sumbit()">
+                    <span>发布</span>
+                  </button>
+                  <button nz-button [nzType]="'default'" (click)="cancel()">
+                    <span>取消</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+        </div>
+      </ng-template>
+    </nz-card>
+  </div>

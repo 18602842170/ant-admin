@@ -1,0 +1,48 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'" class="breadcrumb_style">
+  <div nz-col [nzSpan]="24">
+    <nz-breadcrumb class='breadcrumb_test'>
+    </nz-breadcrumb>
+  </div>
+  <div nz-col [nzSpan]="24">
+  </div>
+</div>
+
+<div nz-row [nzType]="'flex'" style="margin:24px; background: #fff; padding:24px 32px;">
+  <div nz-col [nzSpan]="4"  class='text_margin' style="position: absolute;right: 48px;">
+    <button nz-button class="addBtn"  [nzType]="'primary'" style="margin-right: 8px;float: right" (click)="signup()">
+      <span>新建报名</span>
+    </button>
+  </div>
+  <div nz-col [nzSpan]="24" class='text_margin'>
+  </div>
+
+  <div nz-col [nzSpan]="24" class='text_margin' style="margin-top: 52px;">
+    <nz-table #nzTable  [nzAjaxData]="icourseAllot"   [nzIsPagination]="false">
+       <thead nz-thead>
+        <tr>
+          <th nz-th  [nzWidth]="'15%'">
+            <span>课程</span>
+          </th>
+          <th nz-th [nzWidth]="'7%'">
+            <span>报名人</span>
+          </th>
+          <th nz-th [nzWidth]="'7%'">
+            <span>是否缴费</span>
+          </th>
+        </tr>
+      </thead>
+       <tbody nz-tbody *ngIf='icourseAllot' >
+          <tr *ngFor="let courseAllot of icourseAllot">
+            <td>{{ courseAllot.courseName }}</td>
+            <td>{{ courseAllot.userName }}</td>
+            <td *ngIf="courseAllot.isCharge==true">是</td>
+            <td *ngIf="courseAllot.isCharge==false">否</td>
+          </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div style="margin-top: 20px;">
+      <nz-pagination [nzPageIndex]="pageCon.page" [nzTotal]="pageCon.count"  [nzPageSize]="pageCon.pageSize" (nzPageIndexChange)="changePage($event)"></nz-pagination>
+  </div>
+
+  </div>

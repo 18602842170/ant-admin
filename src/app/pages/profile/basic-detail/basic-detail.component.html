@@ -1,0 +1,177 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'" class="breadcrumb_style breadcrumb">
+  <div nz-col [nzSpan]="24" class="breadcrumb-test">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a routerLink="pages/dashboard/analysis">
+          <i class="anticon anticon-user"></i>
+          <span>首页</span>
+        </a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        基础详情页
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+  </div>
+  <div nz-col [nzSpan]="24" class="breadcrumb-detail">
+    <div class="main">
+      <div class="row">
+        <h1 class="breadcrumb-detail-title">基础详情页</h1>
+      </div>
+      <div class="row">
+        <div class="breadcrumb-detail-content">表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<nz-card style="margin:24px; min-height: 735px; padding:24px 32px;">
+  <ng-template #body>
+    <div>
+      <div class="border-box">
+        <span class='text_margin fs_16'>退款申请</span>
+        <div nz-row>
+          <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" class='text_margin'>
+            <p>取货单号：1000000000</p>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" class='text_margin'>
+            <p>状态：已取货</p>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" class='text_margin'>
+            <p>销售单号：1234123421</p>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8">
+            <p>子订单：3214321432</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-box">
+        <span class='text_margin fs_16'>用户信息</span>
+        <div nz-row>
+          <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" class='text_margin'>
+            <p>用户姓名：付小小</p>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" class='text_margin'>
+            <p>联系电话：18100000000</p>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" class='text_margin'>
+            <p>常用快递：菜鸟仓储</p>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8">
+            <p>取货地址：浙江省杭州市西湖区万塘路18号</p>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8">
+            <p>备注：无</p>
+          </div>
+        </div>
+      </div>
+      <span class='text_margin fs_16'>退货商品</span>
+      <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" class='text_margin'>
+        <thead nz-thead>
+          <tr>
+            <th nz-th>
+              <span>Name</span>
+            </th>
+            <th nz-th>
+              <span>Age</span>
+            </th>
+            <th nz-th>
+              <span>Address</span>
+            </th>
+            <th nz-th>
+              <span>Action</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody nz-tbody>
+          <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+            <td nz-td>
+              <a>{{data.name}}</a>
+            </td>
+            <td nz-td>{{data.age}}</td>
+            <td nz-td>{{data.address}}</td>
+            <td nz-td>
+              <span>
+                <a href="#">Action 一 {{data.name}}</a>
+                <span nz-table-divider></span>
+                <a href="#">Delete</a>
+                <span nz-table-divider></span>
+                <nz-dropdown>
+                  <a class="ant-dropdown-link" nz-dropdown>
+                    More actions
+                    <i class="anticon anticon-down"></i>
+                  </a>
+                  <ul nz-menu>
+                    <li nz-menu-item>
+                      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
+                    </li>
+                    <li nz-menu-item>
+                      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">2nd menu item</a>
+                    </li>
+                    <li nz-menu-item>
+                      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">3rd menu item</a>
+                    </li>
+                  </ul>
+                </nz-dropdown>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+
+      <span class='text_margin fs_16'>退货进度</span>
+      <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" class='text_margin'>
+        <thead nz-thead>
+          <tr>
+            <th nz-th>
+              <span>Name</span>
+            </th>
+            <th nz-th>
+              <span>Age</span>
+            </th>
+            <th nz-th>
+              <span>Address</span>
+            </th>
+            <th nz-th>
+              <span>Action</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody nz-tbody>
+          <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+            <td nz-td>
+              <a>{{data.name}}</a>
+            </td>
+            <td nz-td>{{data.age}}</td>
+            <td nz-td>{{data.address}}</td>
+            <td nz-td>
+              <span>
+                <a href="#">Action 一 {{data.name}}</a>
+                <span nz-table-divider></span>
+                <a href="#">Delete</a>
+                <span nz-table-divider></span>
+                <nz-dropdown>
+                  <a class="ant-dropdown-link" nz-dropdown>
+                    More actions
+                    <i class="anticon anticon-down"></i>
+                  </a>
+                  <ul nz-menu>
+                    <li nz-menu-item>
+                      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
+                    </li>
+                    <li nz-menu-item>
+                      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">2nd menu item</a>
+                    </li>
+                    <li nz-menu-item>
+                      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">3rd menu item</a>
+                    </li>
+                  </ul>
+                </nz-dropdown>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </ng-template>
+</nz-card>

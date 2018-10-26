@@ -1,0 +1,422 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'" class="breadcrumb">
+  <div nz-col [nzSpan]="24" class="breadcrumb-test">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a routerLink="pages/dashboard/analysis">
+          <i class="anticon anticon-user"></i>
+          <span>首页</span>
+        </a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        高级详情页
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+  </div>
+  <div nz-col [nzSpan]="18">
+    <div nz-col [nzXs]="4" [nzSm]="4" [nzMd]="2" [nzLg]="1" [nzXl]="1" class='text_margin' style='text-align:center'>
+      <img class='img' alt="" src="https://gw.alipayobjects.com/zos/rmsportal/nxkuOJlFJuAUhzlMTCEe.png">
+    </div>
+    <div nz-col [nzXs]="20" [nzSm]="20" [nzMd]="22" [nzLg]="23" [nzXl]="23" class='text_margin'>
+      <h1>单号：234231029431</h1>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12" class='text_margin'>
+      <p>创建人：曲丽丽</p>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12" class='text_margin'>
+      <p>订购产品：XX 服务</p>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12" class='text_margin'>
+      <p>创建时间：2017-07-07</p>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12" class='text_margin'>
+      <p>关联单据：
+        <a>12421</a>
+      </p>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12" class='text_margin'>
+      <p>生效日期：2017-07-07 ~ 2017-08-08</p>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12" class='text_margin'>
+      <p>备注：请于两个工作日内确认</p>
+    </div>
+  </div>
+  <div nz-col [nzSpan]="6">
+    <div nz-col [nzSpan]="24" class='text_margin'>
+      <button nz-button [nzType]="'default'">
+        <span>操作</span>
+      </button>
+      <button nz-button [nzType]="'default'">
+        <span>操作</span>
+      </button>
+      <nz-dropdown [nzPlacement]="'bottomRight'">
+        <button nz-button nz-dropdown>...</button>
+        <ul nz-menu>
+          <li nz-menu-item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">操作1</a>
+          </li>
+          <li nz-menu-item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">操作2</a>
+          </li>
+        </ul>
+      </nz-dropdown>
+      <button nz-button [nzType]="'primary'">
+        <span>主要操作</span>
+      </button>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12">
+      <div nz-col [nzSpan]="24" class='text_margin'>
+        <p>状态</p>
+      </div>
+      <div nz-col [nzSpan]="24" class='text_margin'>
+        <h2>待审批</h2>
+      </div>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12">
+      <div nz-col [nzSpan]="24" class='text_margin'>
+        <p>订单金额</p>
+      </div>
+      <div nz-col [nzSpan]="24" class='text_margin'>
+        <h2>¥ 568.08</h2>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div nz-col [nzSpan]="11" class='text_margin'>
+  </div>
+  <div nz-col [nzSpan]="24">
+    <nz-tabset>
+      <nz-tab>
+        <ng-template #nzTabHeading>
+          详情
+        </ng-template>
+      </nz-tab>
+      <nz-tab>
+        <ng-template #nzTabHeading>
+          规则
+        </ng-template>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+</div>
+
+
+<div style="margin:24px; min-height: 735px;">
+  <nz-card class="card_margin">
+    <ng-template #title>
+      流程进度
+    </ng-template>
+    <ng-template #body>
+      <div>
+        <nz-steps [(nzCurrent)]="current" nzProgressDot>
+          <nz-step [nzTitle]="'创建项目'" [nzDescription]="'曲丽丽'"></nz-step>
+          <nz-step [nzTitle]="'部门初审'" [nzDescription]="'This is a description.'"></nz-step>
+          <nz-step [nzTitle]="'财务复核'" [nzDescription]="'This is a description.'"></nz-step>
+          <nz-step [nzTitle]="'完成'" [nzDescription]="'This is a description.'"></nz-step>
+        </nz-steps>
+      </div>
+    </ng-template>
+  </nz-card>
+
+  <nz-card class="card_margin">
+    <ng-template #title>
+      用户信息
+    </ng-template>
+    <ng-template #body>
+      <div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'" class="breadcrumb_style">
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" class='text_margin'>
+          <p>用户姓名：付小小</p>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" class='text_margin'>
+          <p>会员卡号：32943898021309809423</p>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" class='text_margin'>
+          <p>身份证：3321944288191034921</p>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" class='text_margin'>
+          <p>联系方式：18112345678</p>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="16" [nzXl]="16" class='text_margin'>
+          <p>联系地址：曲丽丽 18100000000 浙江省杭州市西湖区黄姑山路工专路交叉路口</p>
+        </div>
+        <div nz-col [nzSpan]="24" class='text_margin'>
+          <span class="fs_14">信息组</span>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="8" [nzXl]="8" class='text_margin'>
+          <p>某某数据：725</p>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="16" [nzXl]="16" class='text_margin'>
+          <p>该数据更新时间：2017-08-08</p>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="8" [nzXl]="8" class='text_margin'>
+          <p>某某数据：725</p>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="16" [nzXl]="16" class='text_margin'>
+          <p>该数据更新时间：2017-08-08</p>
+        </div>
+        <div nz-col [nzSpan]="24" class='text_margin'>
+          <span class="fs_14">信息组</span>
+        </div>
+        <div nz-col [nzSpan]="24" class='text_margin'>
+          <nz-card [nzNoHovering]='true'>
+            <ng-template #title>
+              多层级信息组
+            </ng-template>
+            <ng-template #body>
+              <div>
+                <div>
+                  <div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'">
+                    <div nz-col [nzSpan]="24" class='text_margin'>
+                      <span class="fs_14">组名称</span>
+                    </div>
+                    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" class='text_margin'>
+                      负责人：林东东
+                    </div>
+                    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" class='text_margin'>
+                      角色码：1234567
+                    </div>
+                    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" class='text_margin'>
+                      所属部门：XX公司 - YY部
+                    </div>
+                    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8">
+                      过期时间：2017-08-08
+                    </div>
+                    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8">
+                      描述：这段描述很长很长很长很长很长很长很长很长很长很长很长很长很长很长...
+                    </div>
+                    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div>
+                  <div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'">
+                    <div nz-col [nzSpan]="24" class='text_margin'>
+                      <span class="fs_14">组名称</span>
+                    </div>
+                    <div nz-col [nzSpan]="24">
+                      学名：Citrullus lanatus (Thunb.) Matsum. et Nakai一年生蔓生藤本；茎、枝粗壮，具明显的棱。卷须较粗..
+                    </div>
+                  </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div>
+                  <div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'">
+                    <div nz-col [nzSpan]="24" class='text_margin'>
+                      <span class="fs_14">组名称</span>
+                    </div>
+                    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8">
+                      负责人：付小小
+                    </div>
+                    <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8">
+                      角色码：1234568
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </nz-card>
+        </div>
+      </div>
+    </ng-template>
+  </nz-card>
+
+  <nz-card class="card_margin">
+    <ng-template #title>
+      用户近半年来电记录
+    </ng-template>
+    <ng-template #body>
+      <div class="phone_come">
+        <i class="anticon anticon-frown-o"></i>暂无数据
+      </div>
+    </ng-template>
+  </nz-card>
+
+  <nz-card class="card_margin">
+    <ng-template #body>
+      <nz-tabset>
+        <nz-tab>
+          <ng-template #nzTabHeading>
+            操作日志一
+          </ng-template>
+          <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" class='text_margin'>
+            <thead nz-thead>
+              <tr>
+                <th nz-th>
+                  <span>Name</span>
+                </th>
+                <th nz-th>
+                  <span>Age</span>
+                </th>
+                <th nz-th>
+                  <span>Address</span>
+                </th>
+                <th nz-th>
+                  <span>Action</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody nz-tbody>
+              <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+                <td nz-td>
+                  <a>{{data.name}}</a>
+                </td>
+                <td nz-td>{{data.age}}</td>
+                <td nz-td>{{data.address}}</td>
+                <td nz-td>
+                  <span>
+                    <a href="#">Action 一 {{data.name}}</a>
+                    <span nz-table-divider></span>
+                    <a href="#">Delete</a>
+                    <span nz-table-divider></span>
+                    <nz-dropdown>
+                      <a class="ant-dropdown-link" nz-dropdown>
+                        More actions
+                        <i class="anticon anticon-down"></i>
+                      </a>
+                      <ul nz-menu>
+                        <li nz-menu-item>
+                          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
+                        </li>
+                        <li nz-menu-item>
+                          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">2nd menu item</a>
+                        </li>
+                        <li nz-menu-item>
+                          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">3rd menu item</a>
+                        </li>
+                      </ul>
+                    </nz-dropdown>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </nz-tab>
+
+        <nz-tab>
+          <ng-template #nzTabHeading>
+            操作日志二
+          </ng-template>
+          <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" class='text_margin'>
+            <thead nz-thead>
+              <tr>
+                <th nz-th>
+                  <span>Name</span>
+                </th>
+                <th nz-th>
+                  <span>Age</span>
+                </th>
+                <th nz-th>
+                  <span>Address</span>
+                </th>
+                <th nz-th>
+                  <span>Action</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody nz-tbody>
+              <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+                <td nz-td>
+                  <a>{{data.name}}</a>
+                </td>
+                <td nz-td>{{data.age}}</td>
+                <td nz-td>{{data.address}}</td>
+                <td nz-td>
+                  <span>
+                    <a href="#">Action 一 {{data.name}}</a>
+                    <span nz-table-divider></span>
+                    <a href="#">Delete</a>
+                    <span nz-table-divider></span>
+                    <nz-dropdown>
+                      <a class="ant-dropdown-link" nz-dropdown>
+                        More actions
+                        <i class="anticon anticon-down"></i>
+                      </a>
+                      <ul nz-menu>
+                        <li nz-menu-item>
+                          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
+                        </li>
+                        <li nz-menu-item>
+                          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">2nd menu item</a>
+                        </li>
+                        <li nz-menu-item>
+                          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">3rd menu item</a>
+                        </li>
+                      </ul>
+                    </nz-dropdown>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </nz-tab>
+
+        <nz-tab>
+          <ng-template #nzTabHeading>
+            操作日志三
+          </ng-template>
+          <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" class='text_margin'>
+            <thead nz-thead>
+              <tr>
+                <th nz-th>
+                  <span>Name</span>
+                </th>
+                <th nz-th>
+                  <span>Age</span>
+                </th>
+                <th nz-th>
+                  <span>Address</span>
+                </th>
+                <th nz-th>
+                  <span>Action</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody nz-tbody>
+              <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+                <td nz-td>
+                  <a>{{data.name}}</a>
+                </td>
+                <td nz-td>{{data.age}}</td>
+                <td nz-td>{{data.address}}</td>
+                <td nz-td>
+                  <span>
+                    <a href="#">Action 一 {{data.name}}</a>
+                    <span nz-table-divider></span>
+                    <a href="#">Delete</a>
+                    <span nz-table-divider></span>
+                    <nz-dropdown>
+                      <a class="ant-dropdown-link" nz-dropdown>
+                        More actions
+                        <i class="anticon anticon-down"></i>
+                      </a>
+                      <ul nz-menu>
+                        <li nz-menu-item>
+                          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
+                        </li>
+                        <li nz-menu-item>
+                          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">2nd menu item</a>
+                        </li>
+                        <li nz-menu-item>
+                          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">3rd menu item</a>
+                        </li>
+                      </ul>
+                    </nz-dropdown>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </nz-tab>
+      </nz-tabset>
+    </ng-template>
+  </nz-card>
+
+</div>

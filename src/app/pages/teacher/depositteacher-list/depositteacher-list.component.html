@@ -1,0 +1,71 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'" class="breadcrumb_style">
+  <div nz-col [nzSpan]="24">
+    <nz-breadcrumb class='breadcrumb_test'>
+    </nz-breadcrumb>
+  </div>
+  <div nz-col [nzSpan]="24">
+  </div>
+</div>
+
+<div nz-row [nzType]="'flex'" style="margin:24px; background: #fff; padding:24px 32px;position: relative">
+  <div nz-col [nzSpan]="5" class='text_margin'>
+    <label style="width:20%">教师姓名：</label>
+    <nz-input style="width:60%" [nzPlaceHolder]="'请输入'" [nzSize]="'large'" [(ngModel)]="pageCon.teacherName"></nz-input>
+  </div>
+  <div nz-col [nzSpan]="5" class='text_margin'>
+    <label style="width:20%">教室：</label>
+    <nz-input style="width:60%" [nzPlaceHolder]="'请输入'" [nzSize]="'large'" [(ngModel)]="pageCon.classRoomName"></nz-input>
+  </div>
+
+
+  <div nz-col [nzSpan]="4"  class='text_margin' style="position: absolute;right: 24px;">
+
+    <button nz-button class="addBtn"  [nzType]="'primary'" style="margin-right: 8px;float: right" (click)="createTeacherDeposit()">
+      <span>新建</span>
+    </button>
+    <button nz-button [nzType]="'primary'" style="margin-right: 8px;float: right" (click)="searchTeacherDepositList(true)">
+      <span>查询</span>
+    </button>
+  </div>
+  <div nz-col [nzSpan]="24" class='text_margin'>
+  </div>
+
+  <div nz-col [nzSpan]="24" class='text_margin' style="margin-top: 20px;">
+    <nz-table #nzTable [nzAjaxData]="list" [nzIsPagination]="false">
+      <thead nz-thead>
+        <tr>
+          <th nz-th  [nzWidth]="'25%'">
+            <span>教师</span>
+          </th>
+          <th nz-th [nzWidth]="'25%'">
+            <span>教室</span>
+          </th>
+          <th nz-th [nzWidth]="'30%'">
+            <span>托管时间</span>
+          </th>
+          <th nz-th>
+            <span>操作</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody nz-tbody *ngIf='list'>
+          <tr *ngFor="let record of list" >
+              <td>{{ record.teacherNameInUser }}</td>
+              <td>{{ record.classRoomName }}</td>
+              <td>{{ record.depositStartDate | date : "yyyy-MM-dd" }} ~ {{ record.depositEndDate | date : "yyyy-MM-dd"}}</td>
+              <td>
+                <span>
+                  <a (click)="edit(record.id)">编辑</a>
+                  <span nz-table-divider></span>
+                  <a (click)="delete(record.id)">删除</a>
+                </span>
+              </td>
+            </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div style="margin-top: 20px;">
+      <nz-pagination [nzPageIndex]="pageCon.page" [nzTotal]="pageCon.count"  [nzPageSize]="pageCon.pageSize" (nzPageIndexChange)="changePage($event)"></nz-pagination>
+  </div>
+  
+</div>

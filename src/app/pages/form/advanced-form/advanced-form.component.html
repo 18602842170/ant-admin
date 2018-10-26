@@ -1,0 +1,240 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'" class="breadcrumb_style breadcrumb">
+  <div nz-col [nzSpan]="24" class='breadcrumb-test'>
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a routerLink="pages/dashboard/analysis">
+          <i class="anticon anticon-user"></i>
+          <span>首页</span>
+        </a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        高级表单
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+  </div>
+  <div nz-col [nzSpan]="24" class='breadcrumb-detail'>
+    <h1 class="breadcrumb-detail-title">高级表单</h1>
+  </div>
+  <div nz-col [nzSpan]="24" class='breadcrumb-detail-content'>
+    <span>高级表单常见于一次性输入和提交大批量数据的场景。</span>
+  </div>
+  <div nz-col [nzSpan]="24" style="height:20px"></div>
+</div>
+
+
+<div style="margin:24px; min-height: 735px;">
+  <nz-card class="card_margin">
+    <ng-template #title>
+      仓库管理
+    </ng-template>
+    <ng-template #body>
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="_submitForm()">
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" nz-form-item nz-row>
+          <div nz-col [nzSpan]="24" class='' style="margin-bottom:10px">
+            <span>仓库名</span>
+          </div>
+          <div class="input_flex" nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+            <nz-input [nzSize]="'large'" formControlName="name" [nzId]="'name'"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('required')">请输入仓库名</div>
+          </div>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" nz-form-item nz-row>
+          <div nz-col [nzSpan]="24" class='' style="margin-bottom:10px">
+            <span>仓库域名</span>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+            <nz-input [nzPlaceHolder]="'请输入'" formControlName="ip" [nzSize]="'large'">
+              <ng-template #addOnBefore>http://</ng-template>
+              <ng-template #addOnAfter>.com</ng-template>
+            </nz-input>
+            <div nz-form-explain *ngIf="getFormControl('ip').dirty&&getFormControl('ip').hasError('required')">请输入</div>
+          </div>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" nz-form-item nz-row>
+          <div nz-col [nzSpan]="24" class='' style="margin-bottom:10px">
+            <span>仓库管理员</span>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+            <nz-select [nzPlaceHolder]="'请选择管理员'" formControlName="admin" [nzSize]="'large'">
+              <nz-option *ngFor="let option of options" [nzLabel]="option.label" [nzValue]="option.value" [nzDisabled]="option.disabled">
+              </nz-option>
+            </nz-select>
+            <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('required')">请选择管理员</div>
+          </div>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" nz-form-item nz-row>
+          <div nz-col [nzSpan]="24" class='' style="margin-bottom:10px">
+            <span>审批员</span>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+            <nz-select [nzPlaceHolder]="'请选择审批员'" formControlName="approve" [nzSize]="'large'">
+              <nz-option *ngFor="let option of options" [nzLabel]="option.label" [nzValue]="option.value" [nzDisabled]="option.disabled">
+              </nz-option>
+            </nz-select>
+            <div nz-form-explain *ngIf="getFormControl('approve').dirty&&getFormControl('approve').hasError('required')">请选择审批员</div>
+          </div>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" nz-form-item nz-row>
+          <div nz-col [nzSpan]="24" class='' style="margin-bottom:10px">
+            <span>生效日期</span>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+            <nz-rangepicker [nzSize]="'large'" formControlName="date" [nzPlaceholder]="['开始日期', '结束日期']"></nz-rangepicker>
+            <div nz-form-explain *ngIf="getFormControl('date').dirty&&getFormControl('date').hasError('required')">请选择生效日期</div>
+          </div>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" nz-form-item nz-row>
+          <div nz-col [nzSpan]="24" class='' style="margin-bottom:10px">
+            <span>仓库类型</span>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+            <nz-select [nzPlaceHolder]="'请选择仓库类型'" [nzSize]="'large'" formControlName="type">
+              <nz-option [nzLabel]="'私密'" [nzValue]="'01'"></nz-option>
+              <nz-option [nzLabel]="'公开'" [nzValue]="'02'"></nz-option>
+            </nz-select>
+            <div nz-form-explain *ngIf="getFormControl('type').dirty&&getFormControl('type').hasError('required')">请选择仓库类型</div>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+  </nz-card>
+
+  <nz-card class="card_margin">
+    <ng-template #title>
+      任务管理
+    </ng-template>
+    <ng-template #body>
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="_submitForm()">
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" nz-form-item nz-row>
+          <div nz-col [nzSpan]="24" class='' style="margin-bottom:10px">
+            <span>任务名</span>
+          </div>
+          <div class="input_flex" nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+            <nz-input [nzPlaceHolder]="'请输入'" formControlName="name2" [nzSize]="'large'"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('name2').dirty&&getFormControl('name2').hasError('required')">请输入任务名</div>
+          </div>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" nz-form-item nz-row>
+          <div nz-col [nzSpan]="24" class='' style="margin-bottom:10px">
+            <span>任务描述</span>
+          </div>
+          <div class="input_flex" nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+            <nz-input [nzPlaceHolder]="'请输入'" formControlName="description" [nzSize]="'large'"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('description').dirty&&getFormControl('description').hasError('required')">请输入任务描述</div>
+          </div>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" nz-form-item nz-row>
+          <div nz-col [nzSpan]="24" class='' style="margin-bottom:10px">
+            <span>执行人</span>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+            <nz-select [nzPlaceHolder]="'请选择执行人'" formControlName="execute" [nzSize]="'large'">
+              <nz-option *ngFor="let option of options" [nzLabel]="option.label" [nzValue]="option.value" [nzDisabled]="option.disabled">
+              </nz-option>
+            </nz-select>
+            <div nz-form-explain *ngIf="getFormControl('execute').dirty&&getFormControl('execute').hasError('required')">请选择执行人</div>
+          </div>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" nz-form-item nz-row>
+          <div nz-col [nzSpan]="24" class='' style="margin-bottom:10px;margin-top:10px">
+            <span>责任人</span>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+            <nz-select [nzPlaceHolder]="'请选择责任人'" formControlName="response" [nzSize]="'large'">
+              <nz-option *ngFor="let option of options" [nzLabel]="option.label" [nzValue]="option.value" [nzDisabled]="option.disabled">
+              </nz-option>
+            </nz-select>
+            <div nz-form-explain *ngIf="getFormControl('response').dirty&&getFormControl('response').hasError('required')">请选择责任人</div>
+          </div>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" nz-form-item nz-row>
+          <div nz-col [nzSpan]="24" class='' style="margin-bottom:10px;margin-top:10px">
+            <span>生效日期</span>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+            <nz-timepicker [nzSize]="'large'" formControlName="date2" [nzPlaceHolder]="'提醒时间'" (ngModelChange)="_console($event)"></nz-timepicker>
+            <div nz-form-explain *ngIf="getFormControl('date2').dirty&&getFormControl('date2').hasError('required')">请选择生效日期</div>
+          </div>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8" nz-form-item nz-row>
+          <div nz-col [nzSpan]="24" class='' style="margin-bottom:10px;margin-top:10px">
+            <span>任务类型</span>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+            <nz-select [nzPlaceHolder]="'请选择任务类型'" [nzSize]="'large'" formControlName="type2">
+              <nz-option [nzLabel]="'私密'" [nzValue]="'01'"></nz-option>
+              <nz-option [nzLabel]="'公开'" [nzValue]="'02'"></nz-option>
+            </nz-select>
+            <div nz-form-explain *ngIf="getFormControl('type2').dirty&&getFormControl('type2').hasError('required')">请选择任务类型</div>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+  </nz-card>
+  <nz-card>
+    <ng-template #title>
+      成员管理
+    </ng-template>
+    <ng-template #body>
+      <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10">
+        <thead nz-thead>
+          <tr>
+            <th nz-th [nzWidth]="'25%'">
+              <span>成员姓名</span>
+            </th>
+            <th nz-th [nzWidth]="'15%'">
+              <span>工号</span>
+            </th>
+            <th nz-th [nzWidth]="'40%'">
+              <span>所属部门</span>
+            </th>
+            <th nz-th>
+              <span>操作</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody nz-tbody>
+          <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+            <td nz-td>
+              <span *ngIf="editRow!==data.key">{{data.name}}</span>
+              <span *ngIf="editRow===data.key">
+                <nz-input></nz-input>
+              </span>
+            </td>
+            <td nz-td>
+              <span *ngIf="editRow!==data.key">{{data.num}}</span>
+              <span *ngIf="editRow===data.key">
+                <nz-input></nz-input>
+              </span>
+            </td>
+            <td nz-td>{{data.unit}}</td>
+            <td nz-td>
+              <span *ngIf="editRow!==data.key">
+                <a (click)="edit(data)">编辑</a>
+              </span>
+              <span *ngIf="editRow===data.key">
+                <a (click)="save(data)">保存</a>
+                <span nz-table-divider></span>
+                <nz-popconfirm [nzTitle]="'Sure to cancel?'" (nzOnConfirm)="cancel(data)">
+                  <a nz-popconfirm>取消</a>
+                </nz-popconfirm>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </ng-template>
+  </nz-card>
+
+
+</div>
+
+<nz-affix style="position:fixed;bottom:0;width:100%">
+  <nz-card>
+    <ng-template #body>
+      <button nz-button [nzType]="'primary'" (click)="_submitForm()">
+        <span>提交</span>
+      </button>
+    </ng-template>
+  </nz-card>
+</nz-affix>

@@ -1,0 +1,68 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'" class="breadcrumb_style">
+  <div nz-col [nzSpan]="24">
+    <nz-breadcrumb class='breadcrumb_test'>
+      <nz-breadcrumb-item>
+        <a routerLink="pages/dashboard/analysis">
+          <i class="anticon anticon-user"></i>
+          <span>首页</span>
+        </a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        成功
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+  </div>
+</div>
+
+<div id='successPage' style="margin:24px; background: #fff; min-height: 735px; padding:24px 32px;">
+  <div class="result___xC0Dg">
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
+      <div nz-col [nzSpan]="24" class="box">
+        <i class="center_box anticon anticon-check-circle" style="font-size: 72px;color: #52c41a;"></i>
+      </div>
+      <div nz-col [nzSpan]="24" class="box">
+        <h1 class="center_box">提交成功</h1>
+      </div>
+      <div nz-col [nzSpan]="24" class="box">
+        <h3 class="center_box">提交结果页用于反馈一系列操作任务的处理结果， 如果仅是简单操作，使用 Message 全局提示反馈即可。 本文字区域可以展示简单的补充说明，如果有类似展示 “单据”的需求，下面这个灰色区域可以呈现比较复杂的内容。</h3>
+      </div>
+      <div nz-col [nzSpan]="24" class="box">
+        <div class='extra___27zTj'>
+          <div style="font-size: 16px; color: rgba(0, 0, 0, 0.85); font-weight: 500; margin-bottom: 20px;">项目名称</div>
+          <div class="ant-row" style="margin-bottom: 16px;">
+            <div class="ant-col-xs-24 ant-col-sm-12 ant-col-md-12 ant-col-lg-12 ant-col-xl-6">
+              <span style="color: rgba(0, 0, 0, 0.85);">项目 ID：</span>23421</div>
+            <div class="ant-col-xs-24 ant-col-sm-12 ant-col-md-12 ant-col-lg-12 ant-col-xl-6">
+              <span style="color: rgba(0, 0, 0, 0.85);">负责人：</span>曲丽丽</div>
+            <div class="ant-col-xs-24 ant-col-sm-24 ant-col-md-24 ant-col-lg-24 ant-col-xl-12">
+              <span style="color: rgba(0, 0, 0, 0.85);">生效时间：</span>2016-12-12 ~ 2017-12-12</div>
+          </div>
+          <div>
+            <nz-steps [(nzCurrent)]="current" nzProgressDot>
+              <nz-step [nzTitle]="'创建项目'" [nzDescription]="'曲丽丽'"></nz-step>
+              <nz-step [nzTitle]="'部门初审'" [nzDescription]="'This is a description.'"></nz-step>
+              <nz-step [nzTitle]="'财务复核'" [nzDescription]="'This is a description.'"></nz-step>
+              <nz-step [nzTitle]="'完成'" [nzDescription]="'This is a description.'"></nz-step>
+            </nz-steps>
+          </div>
+        </div>
+      </div>
+      <div nz-col [nzSpan]="24" class="box">
+        <div class="actions___3ojTs">
+          <div>
+            <button nz-button [nzType]="'primary'" [nzSize]="'large'">
+              <span>返回列表</span>
+            </button>
+            <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="saveImgLocal()">
+              <span>查看项目</span>
+            </button>
+            <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)='createImg()'>
+              <span>打 印</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<img src="{{canvasImg}}" />

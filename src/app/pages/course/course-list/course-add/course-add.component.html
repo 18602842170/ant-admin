@@ -1,0 +1,193 @@
+<div style="margin: 24px">
+  <nz-card class="card_margin">
+    <ng-template #body>
+      <div nz-col>
+         <div nz-form >
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>名称</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-input style="width:75%" [nzPlaceHolder]="'请输入'" [nzSize]="'large'" [(ngModel)]="data.name" ></nz-input>
+                <div nz-form-explain *ngIf="data.nameError">请输入名称</div>
+                
+              </div>
+            </div>
+          </div>
+      
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>年级</label>
+            </div>
+           <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-select style="width:75%"  [(ngModel)]="data.gradeId"  [nzPlaceHolder]="'请选择'"  [nzSize]="'large'"  >
+                  <nz-option *ngFor="let pre of presult" [nzLabel]="pre.tpName" [nzValue]="pre.id"></nz-option>
+              </nz-select>
+              <div nz-form-explain *ngIf="data.gradeError">请选择年级</div>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>科目</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-select style="width:75%;"  [(ngModel)]="data.subjectId"  [nzPlaceHolder]="'请选择'"  [nzSize]="'large'" >
+                  <nz-option *ngFor="let pre of subjectResult" [nzLabel]="pre.tpName" [nzValue]="pre.id"></nz-option>
+              </nz-select>
+              <div nz-form-explain *ngIf="data.subjectError">请选择科目</div>
+            </div>
+          </div>
+
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>年份</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-datepicker style="width:75%"    [nzMode]="'month'" [nzFormat]="'YYYY'"  [(ngModel)]="data.year" [nzPlaceHolder]="'Select date'" (ngModelChange)="changeGradeClass($event)"></nz-datepicker>
+                <div nz-form-explain *ngIf="data.yearError">请选择年份</div>
+            </div>
+            
+          </div>
+
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>班级分类</label>
+            </div>
+           <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-select style="width:75%"  [(ngModel)]="data.gradeClassId"  [nzPlaceHolder]="'请选择'"  [nzDisabled]='data.year ==null' [nzSize]="'large'">
+                  <nz-option *ngFor="let pre of gradeClassResult" [nzLabel]="pre.distiguishType" [nzValue]="pre.id"></nz-option>
+              </nz-select>
+              <div nz-form-explain *ngIf="data.gradeClassError">请选择班级分类</div>
+            </div>
+            </div>
+
+
+
+
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>课程人数</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-input-number style="width:75%;"   [(ngModel)]="data.classesNumber" [nzMin]="0" [nzStep]="1" [nzPlaceHolder]="'请输入'"></nz-input-number>
+              <div nz-form-explain *ngIf="data.courseError">请输入课程人数</div>
+            
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>缴费人数</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-input-number style="width:75%;"   [(ngModel)]="data.payNumber" [nzMin]="0" [nzStep]="1" [nzPlaceHolder]="'请输入'"></nz-input-number>
+            
+              <div nz-form-explain *ngIf="data.payError">请输入缴费人数</div>
+            
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>预约人数</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-input-number style="width:75%;"   [(ngModel)]="data.appointmentNumber" [nzMin]="0" [nzStep]="1" [nzPlaceHolder]="'请输入'"></nz-input-number>
+              <div nz-form-explain *ngIf="data.appointError">请输入预约人数</div>
+             
+            </div>
+          </div>
+
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>课时数</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-input-number style="width:75%;"   [(ngModel)]="data.courseNumber" [nzMin]="0" [nzStep]="1" [nzPlaceHolder]="'请输入'"></nz-input-number>
+              <div nz-form-explain *ngIf="data.courseNumberError">请输入课时数</div>
+             
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>价格</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+             <nz-input-number style="width:75%;"   [(ngModel)]="data.price" [nzMin]="0" [nzStep]="1" [nzPlaceHolder]="'请输入'"></nz-input-number>
+              <div nz-form-explain *ngIf="data.priceError">请输入价格</div>
+             
+            </div>
+          </div>
+        
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>教室</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-select style="width:75%;"  [(ngModel)]="data.classroomId"  [nzPlaceHolder]="'请选择'"  [nzSize]="'large'">
+                  <nz-option *ngFor="let pre of classroomResult" [nzLabel]="pre.classroomName" [nzValue]="pre.id"></nz-option>
+              </nz-select>
+              <div nz-form-explain *ngIf="data.classroomError">请选择教室</div>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>精选</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-select style="width:75%;"  [(ngModel)]="data.fine"  [nzPlaceHolder]="'请选择'"  [nzSize]="'large'">
+                  <nz-option *ngFor="let pre of fineoptions" [nzLabel]="pre.label" [nzValue]="pre.value"></nz-option>
+                  
+              </nz-select>
+              <div nz-form-explain *ngIf="data.fineError">请选择是否精选</div>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+            <label for="title" nz-form-item-required>缩略图</label>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+            <nz-radio-group [(ngModel)]="data.backImageUrl">
+              <label nz-radio [nzValue]="'../../share/image/jqr.png'">
+                <img src="../../../../../assets/img/jqr.png" alt="">
+              </label>
+              <label nz-radio [nzValue]="'../../share/image/sstx.png'">
+                <img src="../../../../../assets/img/sstx.png" alt="">
+              </label>
+              <label nz-radio [nzValue]="'../../share/image/tuogyan.png'">
+                <img src="../../../../../assets/img/tuogyan.png" alt="">
+              </label>
+              <label nz-radio [nzValue]="'../../share/image/xusw.png'">
+                <img src="../../../../../assets/img/xusw.png" alt="">
+              </label>
+              <br>
+              <label nz-radio [nzValue]="'../../share/image/xxy.png'">
+                <img src="../../../../../assets/img/xxy.png" alt="">
+              </label>
+              <label nz-radio [nzValue]="'../../share/image/ybsf.png'">
+                <img src="../../../../../assets/img/ybsf.png" alt="">
+              </label>
+              <label nz-radio [nzValue]="'../../share/image/ydlj.png'">
+                <img src="../../../../../assets/img/ydlj.png" alt="">
+              </label>
+              <label nz-radio [nzValue]="'../../share/image/yingyu.png'">
+                <img src="../../../../../assets/img/yingyu.png" alt="">
+              </label>
+               <div nz-form-explain *ngIf="data.imageError">请选择背景图片</div>
+            </nz-radio-group>
+          </div>
+        </div>
+
+
+          <div nz-form-item nz-row>
+            <div nz-form-explain style="margin-top:30px;margin-left: 40%">
+              <button nz-button [nzType]="'primary'" (click)="submit()">
+                <span>提交</span>
+              </button>
+              <button nz-button [nzType]="'default'" (click)="cancel()">
+                <span>取消</span>
+              </button>
+            </div>
+        </div>
+      </div>
+    </ng-template>
+  </nz-card>
+</div>

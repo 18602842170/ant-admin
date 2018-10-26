@@ -1,0 +1,109 @@
+<div class="login-body">
+  <div style="width:420px;margin:auto;padding-top:280px" *ngIf="pageReady">
+    <nz-tabset *ngIf="loginFlag">
+      <nz-tab>
+        <ng-template #nzTabHeading>
+          账号密码登录
+        </ng-template>
+        <form nz-form [formGroup]="validateForm" class="login-form login-margin" (ngSubmit)="_submitForm()">
+          <div nz-form-item>
+            <div nz-form-control>
+              <nz-input formControlName="userName" [nzPlaceHolder]="'请输入用户名'" [nzSize]="'large'">
+                <ng-template #prefix>
+                  <i class="anticon anticon-user"></i>
+                </ng-template>
+              </nz-input>
+              <div nz-form-explain *ngIf="validateForm.controls.userName.dirty&&validateForm.controls.userName.hasError('required')">请输入用户名</div>
+            </div>
+          </div>
+          <div nz-form-item>
+            <div nz-form-control>
+              <nz-input formControlName="password" [nzType]="'password'" [nzPlaceHolder]="'请输入密码'" [nzSize]="'large'">
+                <ng-template #prefix>
+                  <i class="anticon anticon-lock"></i>
+                </ng-template>
+              </nz-input>
+              <div nz-form-explain *ngIf="validateForm.controls.password.dirty&&validateForm.controls.password.hasError('required')">请输入密码</div>
+            </div>
+          </div>
+          <div nz-form-item>
+            <div nz-form-control>
+              <!-- <a class="login-form-forgot" class="login-form-forgot">忘记密码</a> -->
+              <button nz-button class="login-form-button" [nzType]="'primary'" [nzSize]="'large'">登录</button>
+              <!-- <span>其它登录方式</span>
+              <i class="anticon anticon-alipay-circle i-hover"></i>
+              <i class="anticon anticon-taobao-circle i-hover"></i>
+              <i class="anticon anticon-weibo-circle i-hover"></i>
+              <a (click)="toRegister()">注册账号</a> -->
+            </div>
+          </div>
+        </form>
+      </nz-tab>
+    </nz-tabset>
+    <!-- <div *ngIf="!loginFlag">
+      注册
+      <form nz-form [formGroup]="validateForm3" class="login-form" (ngSubmit)="_submitForm3()">
+        <div nz-form-item>
+          <div nz-form-control>
+            <nz-input formControlName="email" (keyup)="onKeyUp()" [nzPlaceHolder]="'邮箱'" [nzSize]="'large'">
+            </nz-input>
+            <div nz-form-explain *ngIf="validateForm3.controls.email.dirty&&validateForm3.controls.email.hasError('email')">请输入邮箱地址</div>
+            <div nz-form-explain *ngIf="validateForm3.controls.email.hasError('email_repeat')">用户名已被使用，请重新输入</div>
+          </div>
+        </div>
+        <div nz-form-item>
+          <div nz-form-control>
+            <nz-input formControlName="password" [nzPlaceHolder]="'密码'" [nzSize]="'large'">
+            </nz-input>
+            <div nz-form-explain *ngIf="validateForm3.controls.password.dirty&&validateForm3.controls.password.hasError('required')">请输入密码</div>
+          </div>
+        </div>
+        <div nz-form-item>
+          <div nz-form-control>
+            <nz-input formControlName="checkPassword" [nzPlaceHolder]="'确认密码'" [nzSize]="'large'">
+            </nz-input>
+            <div nz-form-explain *ngIf="validateForm3.controls.checkPassword.dirty&&validateForm3.controls.checkPassword.hasError('required')">请输入密码</div>
+            <div nz-form-explain *ngIf="validateForm3.controls.checkPassword.dirty&&validateForm3.controls.checkPassword.hasError('confirm')">两次密码不一致</div>
+          </div>
+        </div>
+        <div nz-form-item>
+          <div nz-form-control>
+            <nz-input-group [nzSize]="'large'" nzCompact>
+              <nz-select formControlName="phoneNumberPrefix" style="width: 25%;">
+                <nz-option [nzLabel]="'+86'" [nzValue]="'+86'"></nz-option>
+                <nz-option [nzLabel]="'+87'" [nzValue]="'+87'"></nz-option>
+              </nz-select>
+              <nz-input formControlName="phoneNumber" [nzPlaceHolder]="'11位手机号'" style="width: 75%;"></nz-input>
+            </nz-input-group>
+            <div nz-form-explain *ngIf="validateForm3.controls.phoneNumber.dirty&&validateForm3.controls.phoneNumber.hasError('required')">请输入电话号码</div>
+          </div>
+        </div>
+        <div nz-form-item>
+          <div nz-form-control>
+            <div nz-row [nzGutter]="8">
+              <div nz-col [nzSpan]="16">
+                <nz-input [nzSize]="'large'" [nzPlaceHolder]="'验证码'" formControlName="captcha">
+                  <ng-template #prefix>
+                    <i class="anticon anticon-mail"></i>
+                  </ng-template>
+                </nz-input>
+              </div>
+              <div nz-col [nzSpan]="8">
+                <button nz-button [nzSize]="'large'">获取验证码</button>
+              </div>
+            </div>
+            <div nz-form-explain *ngIf="validateForm3.controls.captcha.dirty&&validateForm3.controls.captcha.hasError('required')">请输入验证码</div>
+          </div>
+        </div>
+        <div nz-form-item>
+          <div nz-form-control>
+            <button nz-button class="login-form-button" [nzType]="'primary'" [disabled]="validateForm3.controls.email.hasError('email') ||
+             this.repeatFlg || validateForm3.controls.password.hasError('required') || validateForm3.controls.checkPassword.hasError('confirm')"
+              [nzSize]="'large'">注册</button>
+            <a (click)="toLogin()">使用已有账号登录</a>
+          </div>
+        </div>
+      </form>
+    </div> -->
+  </div>
+</div>

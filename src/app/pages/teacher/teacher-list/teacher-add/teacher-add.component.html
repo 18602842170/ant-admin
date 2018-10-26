@@ -1,0 +1,74 @@
+<div>
+  <nz-card class="card_margin">
+    <ng-template #body>
+      <div nz-col [nzSpan]="16" [nzOffset]="'4'">
+        <div nz-form >
+
+          <div nz-form-item nz-row>
+              <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                <label for="title" nz-form-item-required>教师姓名</label>
+              </div>
+              <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                <nz-input style="width:75%" [nzPlaceHolder]="'请输入'" [nzSize]="'large'" [(ngModel)]="teacherParama.teacherName"></nz-input>
+              </div>
+          </div>
+          <div nz-form-item nz-row>
+              <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                <label for="title" nz-form-item-required>教师编号</label>
+              </div>
+              <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                <nz-input style="width:75%" [nzPlaceHolder]="'请输入'" [nzSize]="'large'" [(ngModel)]="teacherParama.teacherCd"></nz-input>
+              </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>性别</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-select style="width:75%;"  [nzSize]="'large'" [(ngModel)]="teacherParama.teacherSex" [nzPlaceHolder]="'请选择'">
+                  <nz-option [nzLabel]="'男'" [nzValue]="1"></nz-option>
+                  <nz-option [nzLabel]="'女'" [nzValue]="0"></nz-option>
+              </nz-select>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="title" nz-form-item-required>教师级别</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+              <nz-select style="width:75%;"  [nzSize]="'large'" [(ngModel)]="teacherParama.teacherLevel" [nzPlaceHolder]="'请选择'">
+                  <nz-option [nzLabel]="'1'" [nzValue]="1"></nz-option>
+                  <nz-option [nzLabel]="'2'" [nzValue]="2"></nz-option>
+                  <nz-option [nzLabel]="'3'" [nzValue]="3"></nz-option>
+              </nz-select>
+            </div>
+          </div>
+
+          <nz-calendar [nzLocale]="'zh-cn'">
+              <ng-template #dateCell let-day >
+                <nz-badge [nzStatus]="'success'" [nzText]="day.date|date:'yyyy-MM-dd'" (click)="test(day.title)" *ngIf="test2()"></nz-badge>
+
+                <!-- <nz-badge [nzStatus]="'processing'" [nzText]="day.date" *ngIf="(day.date|date:'EEE')==='Sat'"></nz-badge> -->
+
+              </ng-template>
+              <ng-template #monthCell let-month>
+                <nz-badge [nzStatus]="'success'" [nzText]="'This Month is Sep'" *ngIf="month.index==11"></nz-badge>
+              </ng-template>
+          </nz-calendar>
+
+
+          <div nz-form-item nz-row>
+              <div nz-form-explain style="margin-top:30px;margin-left: 40%">
+                <button nz-button [nzType]="'primary'" (click)="createTeacher()">
+                  <span>提交</span>
+                </button>
+                <button nz-button [nzType]="'default'" (click)="cancel()">
+                  <span>取消</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          </div>
+    </ng-template>
+  </nz-card>
+</div>
