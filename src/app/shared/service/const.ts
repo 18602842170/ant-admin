@@ -1,7 +1,5 @@
 export const BASE_URL = 'http://127.0.0.1:4200';
 
-//export const BASE_URL = 'http://114.116.28.17:4200';
-
 export const LOGIN_URL = '/login';
 
 export const INDEX_URL = '/pages';
