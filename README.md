@@ -1,1 +1,3 @@
 tsms-admin
+
+使用angular2和ant.design为基础架构开发的PC网页。
